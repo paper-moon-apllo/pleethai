@@ -15,8 +15,76 @@ class Word (models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        unique_together = ("japanese", "hiragana", "thai")
+
     def __str__(self):
-        return str(self.id) + ", " + self.japanese + ", " + self.hiragana+ ", " + self.thai
+        return str(self.id) + " [" + self.japanese + ", " + self.hiragana + ", " + self.thai+ "]"
+
+class SysWordJapanese (models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
+    japanese = models.CharField(max_length=127, null=False, blank=False)
+    hiragana =  models.CharField(max_length=127, null=False, blank=False)
+    roman = models.CharField(max_length=127, null=True, blank=True)
+    searchs = models.BigIntegerField(default=0)
+    wordclass_id = models.ForeignKey("WordClass", on_delete=models.PROTECT)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ("japanese", "hiragana")
+
+    def __str__(self):
+        return str(self.id) + " [" + self.japanese + ", " + self.hiragana + "]"
+
+    @classmethod
+    def create(self, word: Word):
+        if word == None:
+            return None
+        return self( \
+            id = word.id, \
+            japanese = word.japanese, \
+            hiragana = word.hiragana, \
+            roman = word.roman, \
+            searchs = word.searchs, \
+            wordclass_id = word.wordclass_id, \
+        )
+
+class SysWordThai (models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
+    japanese_id = models.ForeignKey("SysWordJapanese", on_delete=models.PROTECT)
+    thai =  models.CharField(max_length=127, null=False, blank=False)
+    pronunciation_symbol = models.CharField(max_length=127, null=True, blank=True)
+    pronunciation_kana = models.CharField(max_length=127, null=True, blank=True)
+    english = models.CharField(max_length=127, null=True, blank=True)
+    order = models.PositiveSmallIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ("japanese_id", "thai")
+    
+    def __str__(self):
+        return str(self.id) + " [" + self.thai + "]"
+
+    @classmethod
+    def create(self, word: Word, sys_japanese):
+        if word == None or sys_japanese == None:
+            return None
+        # Search Japanese_ID in Sys_Word_Japanese table
+        japanese = next((item for item in sys_japanese \
+            if item.japanese == word.japanese and item.hiragana == word.hiragana), None)
+        if japanese == None:
+            return None
+        return self( \
+            id = word.id, \
+            japanese_id = japanese, \
+            thai = word.thai, \
+            pronunciation_symbol = word.pronunciation_symbol, \
+            pronunciation_kana = word.pronunciation_kana, \
+            english = word.english, \
+            order = word.order
+        )
 
 class WordClass (models.Model): 
     id = models.PositiveSmallIntegerField(primary_key=True)
@@ -25,11 +93,11 @@ class WordClass (models.Model):
     slug = models.SlugField(max_length=31, null=True, blank=True)
 
     def __str__(self):
-        return self.slug
+        return str(self.id) + " [" + self.slug + ", " + self.japanese + ", " + self.thai + "]"
 
 class Example (models.Model):
     id = models.PositiveIntegerField(primary_key=True)
-    japanese = japanese = models.CharField(max_length=511, null=False, blank=False)
+    japanese = models.CharField(max_length=511, null=False, blank=False)
     hiragana =  models.CharField(max_length=511, null=True, blank=True)
     roman =  models.CharField(max_length=511, null=True, blank=True)
     thai =  models.CharField(max_length=511, null=True, blank=True)
@@ -40,7 +108,7 @@ class Example (models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.id) + ", " + self.japanese
+        return str(self.id) + " [" + self.japanese + "]"
 
 class Constituent (models.Model):
     id = models.PositiveIntegerField(primary_key=True)
