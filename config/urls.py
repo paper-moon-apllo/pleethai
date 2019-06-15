@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from pleethai import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('mail/input/', views.mail_input, name='mail_input'),
+    path('mail/confirm/', views.mail_confirm, name='mail_confirm'),
+    path('mail/complete /', views.mail_complete, name='mail_complete '),
 ]
