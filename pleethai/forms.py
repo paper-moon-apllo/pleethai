@@ -26,9 +26,6 @@ class RequestForm(forms.Form):
         cd_mail2 = cleaned_data.get('mail2')
 
         # mail address match check
-        if cd_mail1 and cd_mail2:
-            # only do something if both fields are valid so far.
-            if cd_mail1 != cd_mail2:
-                msg = "mail address didn't match."
-                self.add_error('mail1', msg)
-                self.add_error('mail2', msg)
+        if cd_mail1 != cd_mail2:
+            msg = "メールアドレスが確認用と一致しません。"
+            self.add_error('mail1', msg)
