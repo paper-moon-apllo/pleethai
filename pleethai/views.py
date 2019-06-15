@@ -1,6 +1,9 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import FormView
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from .forms import RequestForm
 
@@ -42,4 +45,19 @@ class MailComplete(FormView):
         '''
         This method is called when valid form data has been POSTed from request confirm.
         '''
+
+        context = {
+            "form": form,
+        }
+        request_mail_send(context)
+
         return render(self.request, self.template_name, {'form': form})
+
+
+def request_mail_send(context):
+    subject = settings.REQUSET_MAIL_SEND_INFO.get('subject')
+    message = render_to_string(
+        settings.REQUSET_MAIL_SEND_INFO.get('templete_path'), context)
+    from_email = settings.REQUSET_MAIL_SEND_INFO.get('from_email')
+    recipient_list = settings.REQUSET_MAIL_SEND_INFO.get('recipient_list')
+    send_mail(subject, message, from_email, recipient_list)

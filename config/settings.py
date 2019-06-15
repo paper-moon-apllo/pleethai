@@ -149,3 +149,22 @@ SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
 SASS_PRECISION = 8
 SASS_OUTPUT_STYLE = 'compact'
 SASS_TEMPLATE_EXTS = ['.html', '.haml']
+
+# Mail send
+# FOR DEBUG
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+
+REQUSET_MAIL_SEND_INFO = {
+    'subject': 'Pleethai Request Recieved',
+    'templete_path': 'mails/request.txt',
+    'from_email': 'from@test.com',
+    'recipient_list': [
+        'to@test.com',
+    ],
+}
