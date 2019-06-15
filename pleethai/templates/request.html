@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}リクエスト{% endblock title %}
 
 {% block content %}
@@ -7,23 +9,7 @@
     {% csrf_token %}
     <fieldset>
         <legend>リクエスト</legend>
-        <div class="form-group">
-            <lebel for='inputName'>名前</lebel>
-            <input type='text' class="form-control" id='inputName' placeholder="お名前（省略可）">
-        </div>
-        <div class="form-group">
-            <lebel for='inputMail1'>e-mail</lebel>
-            <input type='email' class="form-control" id='inputMail1' placeholder="メールアドレス（省略可）">
-        </div>
-        <div class="form-group">
-            <lebel for='inputMail2'>e-mail(確認用)</lebel>
-            <input type='email' class="form-control" id='inputMail2' placeholder="メールアドレス確認用（省略可。メールアドレス指定ありの場合は必須）">
-        </div>
-        <div class="form-group">
-            <lebel for='inputContent'>リクエスト内容</lebel>
-            <textarea class="form-control" id='inputContent' rows="3" class="was-validated"
-                placeholder="（例）ภาษาไทย（タイ語）が登録されていません。　「永遠に」ってタイ語でどう言いますか？　単語のお気に入り機能が欲しいです。"></textarea>
-        </div>
+        {{ form|crispy }}
     </fieldset>
     <button type="submit" class="btn btn-primary">確認</button>
 </form>

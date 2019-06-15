@@ -1,3 +1,4 @@
+import dj_database_url
 """
 Django settings for config project.
 
@@ -119,7 +120,6 @@ USE_TZ = True
 
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
@@ -129,9 +129,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
+# crispy
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#import os
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 

@@ -19,7 +19,7 @@ from pleethai import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mail/input/', views.mail_input, name='mail_input'),
+    path('mail/input/', views.MailInput.as_view(), name='mail_input'),
     path('mail/confirm/', views.mail_confirm, name='mail_confirm'),
     path('mail/complete /', views.mail_complete, name='mail_complete '),
 ]
