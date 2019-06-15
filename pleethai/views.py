@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import FormView
-from django.views.generic.base import TemplateView
 
 from .forms import RequestForm
 
@@ -16,9 +15,31 @@ class MailInput(FormView):
         return render(self.request, self.template_name, {'form': form})
 
 
-def mail_confirm(request):
-    return render(request, 'request_confirm.html')
+class MailConfirm(FormView):
+    template_name = 'request_confirm.html'
+    back_template_name = 'request.html'
+    form_class = RequestForm
+    success_url = 'mail/complete/'
+
+    def form_valid(self, form):
+        '''
+        This method is called when valid form data has been POSTed from request input.
+        '''
+        return render(self.request, self.template_name, {'form': form})
+
+    def form_invalid(self, form):
+        '''
+        This method is called when invalid form data has been POSTed from request input.
+        '''
+        return render(self.request, self.back_template_name, {'form': form})
 
 
-def mail_complete(request):
-    return render(request, 'request_complete.html')
+class MailComplete(FormView):
+    template_name = 'request_complete.html'
+    form_class = RequestForm
+
+    def form_valid(self, form):
+        '''
+        This method is called when valid form data has been POSTed from request confirm.
+        '''
+        return render(self.request, self.template_name, {'form': form})
