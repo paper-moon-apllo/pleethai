@@ -1,8 +1,8 @@
 class Common:
     # Check value in list or not
-    def contains(list, value, filter):
+    def contains(list, value, match_condition):
         if list is not None:
             for item in list:
-                if filter(item, value):
+                if match_condition(item, value):
                     return True
         return False

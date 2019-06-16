@@ -36,25 +36,25 @@ class WordAdmin(ImportExportModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         my_urls = [
-            url(r'^updatesystables/$', self.admin_site.admin_view(self.updatesystables)),
+            url(r'^updatesystables/$', self.admin_site.admin_view(self.update_system_tables)),
         ]
         return my_urls + urls
 
     # Condition of search
-    def existJapanese(self, sys_ja: SysWordJapanese, word: Word) -> bool:
+    def exist_japanese(self, sys_ja: SysWordJapanese, word: Word) -> bool:
         if not isinstance(sys_ja, SysWordJapanese) or not isinstance(word, Word):
             return False
         return sys_ja.japanese == word.japanese and sys_ja.hiragana == word.hiragana
 
     # Create Sys_word_Japanse table and Sys_Word_Thai table from Word table
-    def updatesystables(self, request):
+    def update_system_tables(self, request):
         all_words = Word.objects.all()
         sys_japanese = []
         sys_thai = []
         try:
             for word in all_words:
                 # If there is not word in sys_japanese, add japanese to Sys_Word_Japanese table
-                if not Common.contains(sys_japanese, word, self.existJapanese):
+                if not Common.contains(sys_japanese, word, self.exist_japanese):
                     sys_japanese.append(SysWordJapanese.create(word))
                 # Add thai to Sys_Word_Thai table
                 tempThai = SysWordThai.create(word, sys_japanese)
