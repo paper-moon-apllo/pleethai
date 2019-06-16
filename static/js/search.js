@@ -1,9 +1,9 @@
-var wordpage = 1;
-var examplepage = 1;
+var wordPage = 1;
+var examplePage = 1;
 
 $(document).ready(function(){
-    LoadWordList();
-    LoadExampleList();
+    loadWordList();
+    loadExampleList();
 
     // Change backgroundcolor of selected item
     $(document).on('mouseenter', '.row', function() {
@@ -24,14 +24,14 @@ $(document).ready(function(){
     // load items
     $(document).on('inview', '#wordbottom', function(e, isInView) {
         if (isInView) {
-            wordpage++;
-            LoadWordList();
+            wordPage++;
+            loadWordList();
         }
     });
     $(document).on('inview', '#examplebottom', function(e, isInView) {
         if (isInView) {
-            examplepage++;
-            LoadExampleList();
+            examplePage++;
+            loadExampleList();
         }
     });
 });
@@ -41,22 +41,22 @@ $('#keyword').keyup(function(e) {
     if ( e.which == 13 ) {
          $("#keyword").blur();
     }
-    wordpage = 1;
-    examplepage = 1;
+    wordPage = 1;
+    examplePage = 1;
     $('#wordcontainer').empty();
     $('#examplecontainer').empty();
-    LoadWordList();
-    LoadExampleList();
+    loadWordList();
+    loadExampleList();
 });
 
-function LoadWordList() {
+function loadWordList() {
     $('#wordloading').show();
     $.ajax({
         'url': 'searchword',
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
-            'page' : wordpage,
+            'page' : wordPage,
         },
         'dataType': 'text'
     }).done( response => {
@@ -65,14 +65,14 @@ function LoadWordList() {
     $('#wordloading').hide();
 }
 
-function LoadExampleList() {
+function loadExampleList() {
     $('#exampleloading').show();
     $.ajax({
         'url': 'searchexample',
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
-            'page' : examplepage,
+            'page' : examplePage,
         },
         'dataType': 'text'
     }).done( response => {

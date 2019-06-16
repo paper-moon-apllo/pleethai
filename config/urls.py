@@ -20,8 +20,8 @@ from pleethai import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.SearchView.as_view(), name='search'),
-    path('word/<int:pk>/', views.WordDetailView.as_view(), name='worddetail'),
-    path('example/<int:pk>/', views.ExampleDetailView.as_view(), name='exampledetail'),
-    path('searchword', views.searchword, name='searchword'),
-    path('searchexample', views.searchexample, name='searchexample'),
+    path('word/<int:pk>/', views.WordDetailView.as_view(), name='word_detail'),
+    path('example/<int:pk>/', views.ExampleDetailView.as_view(), name='example_detail'),
+    path('searchword', views.search_word, name='search_word'),
+    path('searchexample', views.search_example, name='search_example'),
 ]

@@ -12,7 +12,7 @@ class SearchView(generic.ListView):
     template_name = "search.html"
 
 #Search Word
-def searchword(request):
+def search_word(request):
     # Get page number
     page = int(request.GET.get("page"))
     if page < 1:
@@ -45,7 +45,7 @@ def searchword(request):
     return HttpResponse(htmlstr)
 
 #Search Example
-def searchexample(request):
+def search_example(request):
     # Get page number
     page = int(request.GET.get("page"))
     if page < 1:
