@@ -52,7 +52,7 @@ class MailComplete(FormView):
         context = {
             "form": form,
         }
-#        request_mail_send(context)
+        request_mail_send(context)
         # render templte
         return render(self.request, self.template_name, {'form': form})
 
