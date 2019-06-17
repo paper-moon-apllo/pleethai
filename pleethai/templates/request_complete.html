@@ -13,10 +13,9 @@
 <div class="container">
     <div class="row justify-content-start">
         <div class="m-1">
-            <!-- TODO 検索画面url名 -->
-            <form action="" method="POST">
+            <!-- TODO actionには検索画面のurl名を使う -->
+            <form action="/search/" method="GET">
                 <button type="submit" class="btn btn-primary btn-lg">TOP</button>
-                {% csrf_token %}
             </form>
         </div>
     </div>
