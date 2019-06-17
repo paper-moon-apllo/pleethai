@@ -5,7 +5,7 @@
 {% block title %}リクエスト{% endblock title %}
 
 {% block content %}
-<form name='req_form' action="{% url 'mail_confirm' %}" method="post" class="was-validated">
+<form name='req_form' action="{% url 'mail_confirm' %}" method="post" novalidate="novalidate">
     {% csrf_token %}
     <fieldset>
         <legend>リクエスト</legend>
