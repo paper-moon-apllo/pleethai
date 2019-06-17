@@ -13,6 +13,9 @@ class RequestForm(forms.Form):
     mail2 = forms.EmailField(label='メールアドレス（確認用）', required=False, widget=forms.EmailInput(
         attrs={
             'placeholder': 'メールアドレス確認用（省略可）',
+            'oncopy': 'return false',
+            'onpaste': 'return false',
+            'oncontextmenu': 'return false',
         }))
     content = forms.CharField(label='リクエスト内容', widget=forms.Textarea(
         attrs={
