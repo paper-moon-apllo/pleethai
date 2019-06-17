@@ -2,6 +2,8 @@ from django import forms
 
 
 class RequestForm(forms.Form):
+    '''request mail form
+    '''
     name = forms.CharField(label='名前', required=False, widget=forms.TextInput(
         attrs={
             'placeholder': 'お名前（省略可）',
@@ -23,11 +25,15 @@ class RequestForm(forms.Form):
         }))
 
     def clean(self):
+        '''complex validation such as validation of multiple fields
+        '''
+
         super().clean()
         cleaned_data = self.cleaned_data
+
+        # validation of mail1 & mail2
         cd_mail1 = cleaned_data.get('mail1')
         cd_mail2 = cleaned_data.get('mail2')
-
         # mail address match check
         if cd_mail1 != cd_mail2:
             msg = "メールアドレスが確認用と一致しません。"
