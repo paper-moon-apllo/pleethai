@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}PleeThai{% endblock %}
-{% block extracss %}{% endblock %}
-{% block extrajs %}
+{% block extra_js %}
 <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
 {% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="m-2">
     <form action="#">
         <input id="keyword" class="form-control" type="text" placeholder="Search" aria-label="Search">
