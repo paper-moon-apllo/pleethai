@@ -19,6 +19,7 @@ from pleethai import views_dictionary, views_request
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', views_dictionary.SearchView.as_view(), name='search'),
     path('word/<int:pk>/', views_dictionary.WordDetailView.as_view(), name='word_detail'),
     path('example/<int:pk>/', views_dictionary.ExampleDetailView.as_view(), name='example_detail'),
