@@ -40,11 +40,14 @@ $(document).ready(function(){
 });
 
 // Search
-$('#keyword').on('keyup cut paste', function(e) {
-    //if not pc, hide keyboard 
-    if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i) &&
-    e.which == 13 ) {
-        $("#keyword").blur();
+$('#keyword').on('keyup cut paste', function(e) { 
+    if (e.type == 'keyup' && e.which == 13) {
+        //if not pc, hide keyboard
+        if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
+            $("#keyword").blur();
+        }
+        //If hit enter key, not staart timer
+        return;
     }
     initTimer();
 });
