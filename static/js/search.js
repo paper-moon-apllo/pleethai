@@ -1,20 +1,25 @@
-var wordPage = 1;
-var examplePage = 1;
+var SERVER_ERROR_MESSAGE = "An unexpected error occurred while communicating the server."
+var NO_RESULT_MESSAGE = "No results found.";
+var WAIT_TIME = 500;
+
+var wordPage = 0;
+var examplePage = 0;
+var timer;
 
 $(document).ready(function(){
     loadWordList();
     loadExampleList();
 
     // Change backgroundcolor of selected item
-    $(document).on('mouseenter', '.row', function() {
-        $(this).css("background", "#f5f5f5");
+    $('#searchcontainer').on('mouseenter', '.row-word, .row-example', function() {
+        $(this).addClass('bg-light');
     });
-    $(document).on('mouseleave', '.row', function() {
-        $(this).css("background", "#fff");
+    $('#searchcontainer').on('mouseleave', '.row-word, .row-example', function() {
+        $(this).removeClass('bg-light');
     });
 
     // Show detail modal
-    $(document).on('click', '.row', function(e) {
+    $('#searchcontainer').on('click', '.row-word, .row-example', function(e) {
         e.preventDefault();
         $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
             $("#word-detail-modal").modal("show");
@@ -22,35 +27,48 @@ $(document).ready(function(){
     });
 
     // load items
-    $(document).on('inview', '#wordbottom', function(e, isInView) {
-        if (isInView) {
-            wordPage++;
+    $('#searchcontainer').on('inview', '#wordbottom', function(e, isInView) {
+        if (isInView && $('.row-word').length >= 20) {
             loadWordList();
         }
     });
-    $(document).on('inview', '#examplebottom', function(e, isInView) {
-        if (isInView) {
-            examplePage++;
+    $('#searchcontainer').on('inview', '#examplebottom', function(e, isInView) {
+        if (isInView && $('.row-example').length >= 20) {
             loadExampleList();
         }
     });
 });
 
 // Search
-$('#keyword').keyup(function(e) {
-    if ( e.which == 13 ) {
-         $("#keyword").blur();
+$('#keyword').on('keyup cut paste', function(e) {
+    //if not pc, hide keyboard 
+    if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i) &&
+    e.which == 13 ) {
+        $("#keyword").blur();
     }
-    wordPage = 1;
-    examplePage = 1;
+    initTimer();
+});
+
+function initTimer() {
+    //reset timer
+    if (timer) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(search, WAIT_TIME);
+}
+
+function search() {
+    wordPage = 0;
+    examplePage = 0;
     $('#wordcontainer').empty();
     $('#examplecontainer').empty();
     loadWordList();
     loadExampleList();
-});
+}
 
 function loadWordList() {
     $('#wordloading').show();
+    wordPage++;
     $.ajax({
         'url': 'searchword',
         'type': 'GET',
@@ -59,14 +77,31 @@ function loadWordList() {
             'page' : wordPage,
         },
         'dataType': 'text'
-    }).done( response => {
-        $('#wordcontainer').append(response);
+    })
+    .done( response => {
+        if (!response && $('.row-word').length == 0) {
+            $('#wordcontainer').append('<div class="alert alert-warning">'
+            + NO_RESULT_MESSAGE + '</div>');
+        } else if (response) {
+            $('#wordcontainer .alert').remove();
+            $('#wordcontainer').append(response);
+        }
+        
+    })
+    .fail( () => {
+        wordPage--;
+        $('#wordcontainer').append('<div class="alert alert-danger">'
+        + SERVER_ERROR_MESSAGE + '</div>');
+    })
+    .always( () => {
+        $('#wordloading').hide();
     });
-    $('#wordloading').hide();
+    
 }
 
 function loadExampleList() {
     $('#exampleloading').show();
+    examplePage++;
     $.ajax({
         'url': 'searchexample',
         'type': 'GET',
@@ -75,9 +110,23 @@ function loadExampleList() {
             'page' : examplePage,
         },
         'dataType': 'text'
-    }).done( response => {
-        $('#examplecontainer').append(response);
+    })
+    .done( response => {
+        if (!response && $('.row-example').length == 0) {
+            $('#examplecontainer').append('<div class="alert alert-warning">'
+            + NO_RESULT_MESSAGE + '</div>');
+        } else if (response) {
+            $('#examplecontainer .alert').remove();
+            $('#examplecontainer').append(response);
+        }
+    })
+    .fail( () => {
+        examplePage--;
+        $('#examplecontainer').append('<div class="alert alert-danger">'
+        + SERVER_ERROR_MESSAGE + '</div>');
+    })
+    .always( () => {
+        $('#exampleloading').hide();
     });
-    $('#exampleloading').hide();
 }
 
