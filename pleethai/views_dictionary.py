@@ -35,14 +35,14 @@ def search_word(request):
             Q(thai__icontains=keyword) | \
             Q(pronunciation_kana__icontains=keyword) | \
             Q(english__icontains=keyword) \
-        ).select_related().values_list("japanese_id", flat=True).distinct()
+        ).select_related('japanese_id').values_list("japanese_id", flat=True).distinct()
         # Get japanese list
         result_list = SysWordJapanese.objects.filter(id__in=id_list) \
-            .select_related().order_by("-searchs")[offset:limit]
+            .select_related('wordclass_id').order_by("-searchs")[offset:limit]
     else:
         # Get japanese list
         result_list = SysWordJapanese.objects.all() \
-            .select_related().order_by("-searchs")[offset:limit]
+            .select_related('wordclass_id').order_by("-searchs")[offset:limit]
     # Return html
     htmlstr = ""
     for wordobj in result_list:
