@@ -1,5 +1,4 @@
 import dj_database_url
-from django.utils.translation import gettext_lazy as _
 """
 Django settings for config project.
 
@@ -110,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'ja'
+LANGUAGE_CODE = 'th'
 
-LANGUAGES = [('ja', _('Japanese')), ('th', _('Thai'))]
+LANGUAGES = [('ja', 'Japanese'), ('th', 'Thai')]
 
 TIME_ZONE = 'Asia/Tokyo'
 
