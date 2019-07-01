@@ -1,16 +1,17 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 # field
-NAME_LABEL = '名前'
-NAME_PLACEHOLDER = 'お名前（省略可）'
-MAIL1_LABEL = 'メールアドレス'
-MAIL1_PLACEHOLDER = 'メールアドレス（省略可）'
-MAIL2_LABEL = 'メールアドレス確認用'
-MAIL2_PLACEHOLDER = 'メールアドレス確認用（省略可）'
-CONTENT_LABEL = 'リクエスト内容'
-CONTENT_PLACEHOLDER = '（例）ภาษาไทย（タイ語）が登録されていません。　「永遠に」ってタイ語でどう言いますか？　単語のお気に入り機能が欲しいです。'
+NAME_LABEL = _('名前')
+NAME_PLACEHOLDER = _('お名前（省略可）')
+MAIL1_LABEL = _('メールアドレス')
+MAIL1_PLACEHOLDER = _('メールアドレス（省略可）')
+MAIL2_LABEL = _('メールアドレス確認用')
+MAIL2_PLACEHOLDER = _('メールアドレス確認用（省略可）')
+CONTENT_LABEL = _('リクエスト内容')
+CONTENT_PLACEHOLDER = _('（例）ภาษาไทย（タイ語）が登録されていません。　「永遠に」ってタイ語でどう言いますか？　単語のお気に入り機能が欲しいです。')
 # error message
-ERROR_MAIL_UNMATCH = 'メールアドレスが確認用と一致しません。'
+ERROR_MAIL_UNMATCH = _('メールアドレスが確認用と一致しません。')
 
 
 class RequestForm(forms.Form):

@@ -1,7 +1,6 @@
 {% load i18n static %}
 <!DOCTYPE html>
-{% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<html lang="{{ LANGUAGE_CODE|default:"ja" }}">
 
 <head>
     <!-- Required meta tags -->
@@ -20,10 +19,27 @@
 <body>
     <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'search' %}">単語・例文</a>
+            <a class="nav-link" href="{% url 'search' %}">{% trans '単語・例文' %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'mail_input' %}">リクエスト</a>
+            <a class="nav-link" href="{% url 'mail_input' %}">{% trans 'リクエスト' %}</a>
+        </li>
+        <li class="nav-item dropdown">
+            <form name="trans" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                {% for field in form %}{{ field.as_hidden }}{% endfor %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <select class="nav-link" name="language" onchange="submit()" >
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                    <option class="dropdown-item" value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                        selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
         </li>
     </ul>
 
@@ -41,7 +57,7 @@
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
+    
     <!-- Optional JavaScript -->
     {% block extra_js %}{% endblock %}
 </body>
