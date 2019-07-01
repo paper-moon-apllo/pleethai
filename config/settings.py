@@ -113,7 +113,7 @@ LANGUAGE_CODE = 'th'
 
 LANGUAGES = [('ja', 'Japanese'), ('th', 'Thai')]
 
-TIME_ZONE = 'Asia/Tokyo'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 
