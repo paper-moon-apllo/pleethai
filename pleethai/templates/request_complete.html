@@ -12,8 +12,7 @@
 <div class="container">
     <div class="row justify-content-start">
         <div class="m-1">
-            <!-- TODO actionには検索画面のurl名を使う -->
-            <form action="/search/" method="GET">
+            <form action="{% url 'search' %}" method="GET">
                 <button type="submit" class="btn btn-primary btn-lg">TOP</button>
             </form>
         </div>
