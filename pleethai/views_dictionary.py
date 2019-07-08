@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from pleethai.models import SysWordJapanese, SysWordThai, Example
 from django.views import generic
 from django.template.loader import render_to_string
 from django.http import HttpResponse
-from django.db.models import Q
+from django.db.models import Q, Count
+from pleethai.models import SysWordJapanese, SysWordThai, Example, Constituent, Tag
 
 PAGENATE_BY = 20
 
@@ -24,10 +24,15 @@ def search_word(request):
         return
     offset = (page -1) * PAGENATE_BY
     limit = page * PAGENATE_BY
-    # Get keyword
-    keyword = request.GET.get("keyword")
+
+    # Get keyword and tags from request
+    keyword = request.GET.get("keyword").strip()
+    tags = request.GET.getlist("tags[]")
+
+    # Create filter object
+    filter_obj = Q()
     if keyword:
-        # Search and get japanese id list
+        # Search and get japanese id list from SysWordThai
         id_list = SysWordThai.objects.filter( \
             Q(japanese_id__japanese__icontains=keyword) | \
             Q(japanese_id__hiragana__icontains=keyword) | \
@@ -35,14 +40,16 @@ def search_word(request):
             Q(thai__icontains=keyword) | \
             Q(pronunciation_kana__icontains=keyword) | \
             Q(english__icontains=keyword) \
-        ).select_related('japanese_id').values_list("japanese_id", flat=True).distinct()
-        # Get japanese list
-        result_list = SysWordJapanese.objects.filter(id__in=id_list) \
-            .select_related('wordclass_id').order_by("-searchs")[offset:limit]
-    else:
-        # Get japanese list
-        result_list = SysWordJapanese.objects.all() \
-            .select_related('wordclass_id').order_by("-searchs")[offset:limit]
+            ).select_related('japanese_id').values_list("japanese_id", flat=True).distinct()
+        filter_obj.add(Q(id__in=id_list), Q.AND)
+
+    if tags:
+        filter_obj.add(Q(tags__id__in=tags), Q.AND)
+
+    # Get word list
+    result_list = SysWordJapanese.objects.filter(filter_obj) \
+        .select_related('wordclass_id').order_by("-searchs")[offset:limit]
+
     # Return html
     htmlstr = ""
     for wordobj in result_list:
@@ -57,21 +64,29 @@ def search_example(request):
         return
     offset = (page -1) * PAGENATE_BY
     limit = page * PAGENATE_BY
-    # Get keyword
-    keyword = request.GET.get("keyword")
+
+    # Get keyword and tags from request
+    keyword = request.GET.get("keyword").strip()
+    tags = request.GET.getlist("tags[]")
+
+    # Create filter object
+    filter_obj = Q()
     if keyword:
-        # Get japanese list
-        result_list = Example.objects.filter( \
-            Q(japanese__icontains=keyword) | \
-            Q(hiragana__icontains=keyword) | \
-            Q(roman__icontains=keyword) | \
-            Q(thai__icontains=keyword) | \
-            Q(pronunciation_kana__icontains=keyword) | \
-            Q(english__icontains=keyword) \
-        ).order_by("id")[offset:limit]
-    else:
-        # Get japanese list
-        result_list = Example.objects.all().order_by("id")[offset:limit]
+        filter_obj.add(Q(japanese__icontains=keyword), Q.OR)
+        filter_obj.add(Q(hiragana__icontains=keyword), Q.OR)
+        filter_obj.add(Q(roman__icontains=keyword), Q.OR)
+        filter_obj.add(Q(thai__icontains=keyword), Q.OR)
+        filter_obj.add(Q(pronunciation_kana__icontains=keyword), Q.OR)
+        filter_obj.add(Q(english__icontains=keyword), Q.OR)
+
+    if tags:
+        id_list = Constituent.objects.filter(word_id__tags__id__in=tags) \
+            .select_related('word_id').values_list('example_id', flat= True).distinct()
+        filter_obj.add(Q(id__in=id_list), Q.AND)
+    
+    # Get example list
+    result_list = Example.objects.filter(filter_obj).order_by("id")[offset:limit]
+
     # Return html
     htmlstr = ""
     for exampleobj in result_list:
@@ -85,4 +100,9 @@ class WordDetailView(generic.DetailView):
 class ExampleDetailView(generic.DetailView):
     model = Example
     template_name = "example_detail.html"
-    
+
+def tags_all(request):
+    tags = Tag.objects.all() \
+        .annotate(num_times=Count('pleethai_taggeditem_items')) \
+        .order_by('-num_times')
+    return render(request, 'tags.html', {'object_list': tags})
