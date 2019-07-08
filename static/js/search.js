@@ -68,7 +68,7 @@ $(document).ready(function(){
 });
 
 // Search
-$('#keyword').on('keyup cut paste', function(e) { 
+$('#keyword').on('input', function(e) { 
     if (e.type == 'keyup' && e.which == 13) {
         //if not pc, hide keyboard
         if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {

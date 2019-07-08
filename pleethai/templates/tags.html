@@ -1,5 +1,5 @@
 {% load i18n %}
-<div>
+<div class="modal-body">
     {% get_current_language as LANGUAGE_CODE %}
     {% for tag in object_list %}
         {% if LANGUAGE_CODE == "ja" %}
@@ -10,10 +10,11 @@
             <input type="checkbox" class="tag-toggle" data-toggle="toggle" data-on="{{ tag.slug }} ({{ tag.num_times }})" data-off="{{ tag.slug }} ({{ tag.num_times }})" value="{{ tag.id }}">
         {% endif %}
         {% empty %}
-        No available Tag.
+        <div class="alert alert-danger">No available Tag.</div>
     {% endfor %}
 </div>
-<div class="m-2">
-    <button onclick="allToggleOff()" type="button" class="btn btn-info btn-block">{% trans 'クリア' %}</button>
+<div class="modal-footer">
+    <button onclick="allToggleOff()" type="button" class="btn btn-info">{% trans 'クリア' %}</button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal">{% trans '閉じる' %}</button>
 </div>
 

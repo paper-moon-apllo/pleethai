@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 14:45+0700\n"
+"POT-Creation-Date: 2019-07-08 21:52+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,6 +95,10 @@ msgstr "ส่ง"
 msgid "修正"
 msgstr "แก้ไข่"
 
+#: .\pleethai\templates\search.html:18
+msgid "検索ワード"
+msgstr "คำหา"
+
 #: .\pleethai\templates\search.html:19
 msgid "タグ"
 msgstr "แท็ก"
@@ -110,3 +114,7 @@ msgstr "ตัวอย่างประโยค"
 #: .\pleethai\templates\tags.html:17
 msgid "クリア"
 msgstr "สะสาง"
+
+#: .\pleethai\templates\tags.html:18
+msgid "閉じる"
+msgstr "ปิด"
