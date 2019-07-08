@@ -1,0 +1,19 @@
+{% load i18n %}
+<div>
+    {% get_current_language as LANGUAGE_CODE %}
+    {% for tag in object_list %}
+        {% if LANGUAGE_CODE == "ja" %}
+            <input type="checkbox" class="tag-toggle" data-toggle="toggle" data-on="{{ tag.name }} ({{ tag.num_times }})" data-off="{{ tag.name }} ({{ tag.num_times }})" value="{{ tag.id }}">
+        {% elif LANGUAGE_CODE == "th" %}
+            <input type="checkbox" class="tag-toggle" data-toggle="toggle" data-on="{{ tag.thai }} ({{ tag.num_times }})" data-off="{{ tag.thai }} ({{ tag.num_times }})" value="{{ tag.id }}">
+        {% else %}
+            <input type="checkbox" class="tag-toggle" data-toggle="toggle" data-on="{{ tag.slug }} ({{ tag.num_times }})" data-off="{{ tag.slug }} ({{ tag.num_times }})" value="{{ tag.id }}">
+        {% endif %}
+        {% empty %}
+        No available Tag.
+    {% endfor %}
+</div>
+<div class="m-2">
+    <button onclick="allToggleOff()" type="button" class="btn btn-info btn-block">{% trans 'クリア' %}</button>
+</div>
+
