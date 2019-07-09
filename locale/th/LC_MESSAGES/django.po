@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 21:52+0700\n"
+"POT-Creation-Date: 2019-07-09 14:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,6 +65,15 @@ msgstr "คำและประโยค"
 msgid "リクエスト"
 msgstr "ขอร้อง"
 
+#: .\pleethai\templates\example_detail.html:27
+msgid "構成語"
+msgstr "คำศัพท์ประกอบ"
+
+#: .\pleethai\templates\example_detail.html:44
+#: .\pleethai\templates\tags.html:18 .\pleethai\templates\word_detail.html:55
+msgid "閉じる"
+msgstr "ปิด"
+
 #: .\pleethai\templates\request.html:14
 msgid "確認"
 msgstr "ยืนยัน"
@@ -107,7 +116,7 @@ msgstr "แท็ก"
 msgid "単語"
 msgstr "คำศัพท์"
 
-#: .\pleethai\templates\search.html:28
+#: .\pleethai\templates\search.html:28 .\pleethai\templates\word_detail.html:41
 msgid "例文"
 msgstr "ตัวอย่างประโยค"
 
@@ -115,6 +124,6 @@ msgstr "ตัวอย่างประโยค"
 msgid "クリア"
 msgstr "สะสาง"
 
-#: .\pleethai\templates\tags.html:18
-msgid "閉じる"
-msgstr "ปิด"
+#: .\pleethai\templates\word_detail.html:26
+msgid "定義"
+msgstr "ความหมาย"

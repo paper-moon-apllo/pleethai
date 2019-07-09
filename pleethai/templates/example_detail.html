@@ -1,8 +1,46 @@
-<div>This is example detail page.This is example detail page.This is example detail page.This is example detail page.This is example detail page.This is example detail page.This is example detail page.This is example detail page.This is example detail page.</div>
-<div class="link" href="/word/1/">link test</div>
-
-<script>
-    $('.link').click(function(e) {
-        $("#detail-modal .modal-content").load($(this).attr("href"));
-    });
-</script>
+{% load i18n tags %}
+{% get_current_language as LANGUAGE_CODE %}
+<div class="modal-body">
+    <div><h4>{{ object.japanese }}</h4></div>
+    <div>{{ object.hiragana }}</div>
+    <div>{{ object.roman }}</div>
+    <div>
+        {% with object.id|get_tag_list as tag_list %}
+            {% for tag in tag_list %}
+                {% if LANGUAGE_CODE == "ja" %}
+                    <div class="badge badge-primary">{{ tag.name }}</div>
+                {% elif LANGUAGE_CODE == "th" %}
+                    <div class="badge badge-primary">{{ tag.thai }}</div>
+                {% else %}
+                    <div class="badge badge-primary">{{ tag.slug }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+    </div>
+    <hr>
+    <div><h4>{{ object.thai }}</h4></div>
+    <div>{{ object.pronunciation_symbol }}</div>
+    <div>{{ object.pronunciation_kana }}</div>
+    <div>{{ object.english }}</div>
+    {% with object.id|get_const_list as const_list %}
+        {% if const_list %}
+            <hr>
+            <div><h5>{% trans '構成語' %}</h5></div>
+            {% for const in const_list %}
+                <div class="card mb-2 modallink" href="/word/{{ const.word_id.id }}/">
+                    <div class="card-body">
+                        <div><h6>{{ forloop.counter }}. {{ const.word_id.japanese }}</h6></div>
+                        <div>{{ const.word_id.hiragana }}</div>
+                        <div>{{ const.word_id.thai }}</div>
+                        {% with const.word_id.id|get_first_thai as thai_obj %}
+                            <div>{{ thai_obj.thai }}</div>
+                        {% endwith %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal">{% trans '閉じる' %}</button>
+</div>

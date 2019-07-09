@@ -1,12 +1,20 @@
 {% load i18n tags %}
+{% get_current_language as LANGUAGE_CODE %}
 <div class="row row-word" href="/word/{{ object.id }}/">
     <div class="col-4">
         <div><h5>{{ object.japanese }}</h5></div>
         <div>{{ object.hiragana }} {{ object.roman }}</div>
-        <div>{{ object.wordclass_id.slug }} Hit: {{ object.searchs }}</div>
+        <div>
+            {% if LANGUAGE_CODE == "ja" %}
+                <div class="badge badge-warning">{{ object.wordclass_id.japanese }}</div>
+            {% elif LANGUAGE_CODE == "th" %}
+                <div class="badge badge-warning">{{ object.wordclass_id.thai }}</div>
+            {% else %}
+                <div class="badge badge-warning">{{ object.wordclass_id.slug }}</div>
+            {% endif %}
+             Hit: {{ object.searchs }}</div>
     </div>
     <div class="col-3">
-        {% get_current_language as LANGUAGE_CODE %}
         {% for tag in object.tags.all %}
             {% if LANGUAGE_CODE == "ja" %}
                 <div class="badge badge-primary">{{ tag.name }}</div>
@@ -22,7 +30,7 @@
         {% for thai in thai_list %}
             <div>
                 <div class="d-inline-block w-50">
-                    <h5>{{ forloop.counter }}. {{ thai.thai }}</hd>
+                    <h5>{{ forloop.counter }}. {{ thai.thai }}</h5>
                 </div>
                 <div class="d-inline-block">
                     <h5>{{ thai.english }}</h5>
