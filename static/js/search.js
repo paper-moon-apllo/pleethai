@@ -47,6 +47,17 @@ $(document).ready(function(){
         }
     });
 
+    // Click link in detail-modal
+    $('#detail-modal').on('click', '.modallink', function() {
+        $("#detail-modal .modal-content").load($(this).attr("href"));
+    })
+    .on('mouseenter', '.modallink', function() {
+        $(this).addClass('bg-light');
+    })
+    .on('mouseleave', '.modallink', function() {
+        $(this).removeClass('bg-light');
+    })
+
     // Show tags modal
     $(document).on('click', '#tagbutton', function() {
         $("#tag-modal").modal("show");
@@ -63,7 +74,6 @@ $(document).ready(function(){
             search();
         }
     });
-  
 
     // load items
     $('#searchcontainer').on('inview', '#wordbottom', function(e, isInView) {
@@ -80,15 +90,15 @@ $(document).ready(function(){
 
 // Search
 $('#keyword').on('input', function(e) { 
-    if (e.type == 'keyup' && e.which == 13) {
+    initTimer();
+})
+.on('keyup', function(e) { 
+    if (e.which == 13) {
         //if not pc, hide keyboard
         if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
             $("#keyword").blur();
         }
-        //If hit enter key, not staart timer
-        return;
     }
-    initTimer();
 });
 
 function initTimer() {
