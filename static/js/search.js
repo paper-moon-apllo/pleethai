@@ -4,9 +4,10 @@ var WAIT_TIME = 500;
 
 var wordPage = 0;
 var examplePage = 0;
-var isDragging = false;
+var holdFlag = false;
 var clearFlag = false;
-var timer;
+var inputTimer;
+var clickTimer;
 
 $(document).ready(function(){
     loadWordList();
@@ -16,23 +17,33 @@ $(document).ready(function(){
     // Change backgroundcolor of selected item
     $('#searchcontainer').on('mouseenter', '.row-word, .row-example', function() {
         $(this).addClass('bg-light');
-    });
-    $('#searchcontainer').on('mouseleave', '.row-word, .row-example', function() {
+    })
+    .on('mouseleave', '.row-word, .row-example', function() {
         $(this).removeClass('bg-light');
-    });
+    })
 
-    // Show detail modal *dont show when drag
-    $('#searchcontainer').on('mousedown', function() {
-        isDragging = false;
-    });
-    $('#searchcontainer').on('mousemove', function() {
-        isDragging = true;
-    });
-    $('#searchcontainer').on('click', '.row-word, .row-example', function(e) {
-        if (isDragging) {
-            e.stopPropagation();
-        } else {
-            $( "#detail-modal .modal-content" ).load($(this).attr("href"));
+    // Show detail modal *dont show when hold
+    .on('mousedown', '.row-word, .row-example', function() {
+        holdFlag = false;
+        clickTimer =setTimeout(function(){
+            holdFlag = true;
+        }, 350);
+    })
+    .on('mouseup', '.row-word, .row-example', function() {
+        if (clickTimer) {
+            clearTimeout(clickTimer);
+        }
+        // If selected text, return
+        if(window.getSelection) {
+            selectedStr = window.getSelection().toString();
+            if(selectedStr !== '' && selectedStr !== '\n') {
+              return;
+            }
+        }
+        if (!holdFlag) {
+            $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
+                $("#detail-modal").modal("show");
+            });
         }
     });
 
@@ -44,10 +55,10 @@ $(document).ready(function(){
     // Create toggles
     $('#tag-modal').on('shown.bs.modal', function() {
         $('.tag-toggle').bootstrapToggle();
-    });
+    })
 
     // Search by change toggle
-    $('#tag-modal').on('change', '.tag-toggle', function(e) {
+    .on('change', '.tag-toggle', function(e) {
         if (!clearFlag) {
             search();
         }
@@ -59,8 +70,8 @@ $(document).ready(function(){
         if (isInView && $('.row-word').length >= 20) {
             loadWordList();
         }
-    });
-    $('#searchcontainer').on('inview', '#examplebottom', function(e, isInView) {
+    })
+    .on('inview', '#examplebottom', function(e, isInView) {
         if (isInView && $('.row-example').length >= 20) {
             loadExampleList();
         }
@@ -82,10 +93,10 @@ $('#keyword').on('input', function(e) {
 
 function initTimer() {
     //reset timer
-    if (timer) {
-        clearTimeout(timer);
+    if (inputTimer) {
+        clearTimeout(inputTimer);
     }
-    timer = setTimeout(search, WAIT_TIME);
+    inputTimer = setTimeout(search, WAIT_TIME);
 }
 
 function search() {
