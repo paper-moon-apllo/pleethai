@@ -68,8 +68,8 @@ class WordAdmin(ImportExportModelAdmin):
                 if tempThai != None:
                     sys_thai.append(tempThai)
             # delete and recreate
-            for conDict in Constituent.objects.values():
-                temp_constituent.append(Constituent(**conDict))
+            for con_dict in Constituent.objects.values():
+                temp_constituent.append(Constituent(**con_dict))
             Constituent.objects.all().delete()
             SysWordThai.objects.all().delete()
             SysWordJapanese.objects.all().delete()

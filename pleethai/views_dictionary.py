@@ -47,7 +47,7 @@ def search_word(request):
         filter_obj.add(Q(tags__id__in=tags), Q.AND)
 
     # Get word list
-    result_list = SysWordJapanese.objects.filter(filter_obj) \
+    result_list = SysWordJapanese.objects.filter(filter_obj).distinct() \
         .select_related('wordclass_id').order_by("-searchs")[offset:limit]
 
     # Return html
