@@ -17,11 +17,11 @@
     <div class="col-3">
         {% for tag in object.tags.all %}
             {% if LANGUAGE_CODE == "ja" %}
-                <div class="badge badge-primary">{{ tag.name }}</div>
+                <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.name }} </div>
             {% elif LANGUAGE_CODE == "th" %}
-                <div class="badge badge-primary">{{ tag.thai }}</div>
+                <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.thai }}</div>
             {% else %}
-                <div class="badge badge-primary">{{ tag.slug }}</div>
+                <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.slug }}</div>
             {% endif %}
         {% endfor %}
     </div>

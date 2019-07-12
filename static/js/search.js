@@ -6,6 +6,8 @@ var wordPage = 0;
 var examplePage = 0;
 var holdFlag = false;
 var clearFlag = false;
+var badgeClickedFlag = false;
+var searchedFlag = false;
 var inputTimer;
 var clickTimer;
 
@@ -14,24 +16,48 @@ $(document).ready(function(){
     loadExampleList();
     loadTagList();
 
+    // Search
+    $('#content').on('input', '#keyword', function(e) { 
+        initTimer();
+    })
+    .on('keyup', function(e) { 
+        if (e.which == 13) {
+            //if not pc, hide keyboard
+            if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
+                $("#keyword").blur();
+            }
+        }
+    })
+    // Show tags modal
+    .on('click', '#tagbutton', function() {
+        $("#tag-modal").modal("show");
+    })
+    // Clear keyword and tags
+    .on('click', '#clearbutton', function() {
+        allToggleOff();
+        $('#keyword').val('');
+        search();
+    })
     // Change backgroundcolor of selected item
-    $('#searchcontainer').on('mouseenter', '.row-word, .row-example', function() {
+    .on('mouseenter', '.row-word, .row-example, .modallink', function() {
         $(this).addClass('bg-light');
     })
-    .on('mouseleave', '.row-word, .row-example', function() {
+    .on('mouseleave', '.row-word, .row-example, .modallink', function() {
         $(this).removeClass('bg-light');
     })
-
     // Show detail modal *dont show when hold
-    .on('mousedown', '.row-word, .row-example', function() {
+    .on('mousedown', '.row-word, .row-example, .modallink', function() {
         holdFlag = false;
         clickTimer =setTimeout(function(){
             holdFlag = true;
         }, 350);
     })
-    .on('mouseup', '.row-word, .row-example', function() {
+    .on('mouseup', '.row-word, .row-example, .modallink', function(e) {
         if (clickTimer) {
             clearTimeout(clickTimer);
+        }
+        if ($(e.target).is('.tag-badge')) {
+            return;
         }
         // If selected text, return
         if(window.getSelection) {
@@ -41,42 +67,17 @@ $(document).ready(function(){
             }
         }
         if (!holdFlag) {
-            $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
-                $("#detail-modal").modal("show");
-            });
+            if ($(this).is('.row-word, .row-example')) {
+                $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
+                    $("#detail-modal").modal("show");
+                });
+            } else if($(this).is('.modallink')) {
+                $("#detail-modal .modal-content").load($(this).attr("href"));
+            }
         }
-    });
-
-    // Click link in detail-modal
-    $('#detail-modal').on('click', '.modallink', function() {
-        $("#detail-modal .modal-content").load($(this).attr("href"));
     })
-    .on('mouseenter', '.modallink', function() {
-        $(this).addClass('bg-light');
-    })
-    .on('mouseleave', '.modallink', function() {
-        $(this).removeClass('bg-light');
-    })
-
-    // Show tags modal
-    $(document).on('click', '#tagbutton', function() {
-        $("#tag-modal").modal("show");
-    });
-
-    // Create toggles
-    $('#tag-modal').on('shown.bs.modal', function() {
-        $('.tag-toggle').bootstrapToggle();
-    })
-
-    // Search by change toggle
-    .on('change', '.tag-toggle', function(e) {
-        if (!clearFlag) {
-            search();
-        }
-    });
-
-    // load items
-    $('#searchcontainer').on('inview', '#wordbottom', function(e, isInView) {
+    // Load items
+    .on('inview', '#wordbottom', function(e, isInView) {
         if (isInView && $('.row-word').length >= 20) {
             loadWordList();
         }
@@ -85,20 +86,40 @@ $(document).ready(function(){
         if (isInView && $('.row-example').length >= 20) {
             loadExampleList();
         }
-    });
-});
-
-// Search
-$('#keyword').on('input', function(e) { 
-    initTimer();
-})
-.on('keyup', function(e) { 
-    if (e.which == 13) {
-        //if not pc, hide keyboard
-        if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
-            $("#keyword").blur();
+    })
+    // Create toggles
+    .on('shown.bs.modal', '#tag-modal', function() {
+        $('.tag-toggle').bootstrapToggle();
+    })
+    // Search by change toggle
+    .on('change', '.tag-toggle', function(e) {
+        if (!clearFlag) {
+            if (!searchedFlag) {
+                search();
+            }
+            if (badgeClickedFlag) {
+                searchedFlag = true;
+            }
         }
-    }
+    })
+    .on('click', '#tagclearbutton', function() {
+        allToggleOff();
+        search();
+    })
+    // Click tag in search result
+    .on('click', '.tag-badge', function() {
+        badgeClickedFlag = true;
+        // clear all tag toggles
+        allToggleOff();
+        // check selected tag
+        $('#keyword').val('');
+        var value =  $(this).attr('value');
+        $('#tag-toggle' + value).prop('checked', true).change();
+        // close modal
+        $('#detail-modal').modal('hide');
+        badgeClickedFlag = false;
+        searchedFlag = false;
+    });
 });
 
 function initTimer() {
@@ -208,12 +229,10 @@ function loadTagList() {
     });
 }
 
-
 // Clear tags
-function allToggleOff(e) {
+function allToggleOff() {
     clearFlag = true;
-    $('.tag-toggle').bootstrapToggle('off');
-    search();
+    $('.tag-toggle').prop('checked', false).change();
     clearFlag = false;
 }
 
@@ -223,4 +242,3 @@ function getTags() {
         return $(this).val();
     }).get();
 }
-

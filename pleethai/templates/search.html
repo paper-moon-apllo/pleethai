@@ -9,14 +9,15 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/bootstrap4-toggle.min.css' %}">
-<link rel="stylesheet" href="{% static 'css/tags.css' %}">
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="m-2">
     <form action="#" class="form-inline">
-        <input id="keyword" class="form-control col-9" type="text" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
+        <input id="keyword" class="form-control col-6" type="text" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
         <button id="tagbutton" type="button" class="btn btn-primary col-3">{% trans 'タグ' %}</button>
+        <button id="clearbutton" type="button" class="btn btn-info col-3">{% trans 'クリア' %}</button>
     </form>
 </div>
 <!-- Tab Navigation -->
