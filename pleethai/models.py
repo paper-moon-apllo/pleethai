@@ -1,4 +1,15 @@
 from django.db import models
+from taggit.models import TagBase, GenericTaggedItemBase
+from taggit.managers import TaggableManager
+
+class Tag(TagBase):
+    thai = models.CharField(max_length=100)
+
+class TaggedItem(GenericTaggedItemBase):
+    tag = models.ForeignKey(Tag, related_name="%(app_label)s_%(class)s_items", on_delete=models.CASCADE)
+    class Meta:
+        index_together = [["content_type", "object_id"]]
+        unique_together = [["content_type", "object_id", "tag"]]
 
 class Word (models.Model):
     id = models.PositiveIntegerField(primary_key=True)
@@ -12,6 +23,7 @@ class Word (models.Model):
     english = models.CharField(max_length=127, null=True, blank=True)
     searchs = models.BigIntegerField(default=0)
     wordclass_id = models.ForeignKey("WordClass", on_delete=models.PROTECT)
+    tags = models.CharField(max_length=511, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,6 +40,7 @@ class SysWordJapanese (models.Model):
     roman = models.CharField(max_length=127, null=True, blank=True)
     searchs = models.BigIntegerField(default=0)
     wordclass_id = models.ForeignKey("WordClass", on_delete=models.PROTECT)
+    tags = TaggableManager(through=TaggedItem, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -113,7 +126,7 @@ class Example (models.Model):
 class Constituent (models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     example_id = models.ForeignKey("Example", on_delete=models.PROTECT)
-    word_id = models.ForeignKey("Word", on_delete=models.PROTECT)
+    word_id = models.ForeignKey("SysWordJapanese", on_delete=models.PROTECT)
     order = models.PositiveSmallIntegerField(null=False)
 
     class Meta:

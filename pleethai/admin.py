@@ -1,11 +1,12 @@
 from django.contrib import admin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
-from pleethai.models import Word, SysWordJapanese, SysWordThai, WordClass, Example, Constituent
-from pleethai.common import Common
 from django.conf.urls import url
 from django.contrib import messages
 from django.shortcuts import redirect
+from pleethai.models import Word, SysWordJapanese, SysWordThai, WordClass, Example, Constituent, Tag, TaggedItem
+from pleethai.common import Common
+from taggit.utils import _parse_tags
 
 class WordResource(resources.ModelResource):
 
@@ -26,6 +27,11 @@ class ConstituentResource(resources.ModelResource):
 
     class Meta:
         model = Constituent
+
+class TagResource(resources.ModelResource):
+
+    class Meta:
+        model = Tag
 
 class WordAdmin(ImportExportModelAdmin):
     resource_class = WordResource
@@ -51,6 +57,7 @@ class WordAdmin(ImportExportModelAdmin):
         all_words = Word.objects.all()
         sys_japanese = []
         sys_thai = []
+        temp_constituent = []
         try:
             for word in all_words:
                 # If there is not word in sys_japanese, add japanese to Sys_Word_Japanese table
@@ -61,15 +68,26 @@ class WordAdmin(ImportExportModelAdmin):
                 if tempThai != None:
                     sys_thai.append(tempThai)
             # delete and recreate
+            for con_dict in Constituent.objects.values():
+                temp_constituent.append(Constituent(**con_dict))
+            Constituent.objects.all().delete()
             SysWordThai.objects.all().delete()
             SysWordJapanese.objects.all().delete()
             SysWordJapanese.objects.bulk_create(sys_japanese)
             SysWordThai.objects.bulk_create(sys_thai)
+            Constituent.objects.bulk_create(temp_constituent)
+            self.update_tags()
             messages.info(request, "Succeeded to update system tables")
         except Exception as e:
             messages.error(request, "Failed to update system tables")
             messages.error(request, str(e))
-        return redirect(request.META['HTTP_REFERER'])        
+        return redirect(request.META['HTTP_REFERER'])
+
+    # Update tags
+    def update_tags(self):
+        for sys_word in SysWordJapanese.objects.all():
+            for tag in _parse_tags(Word.objects.filter(id=sys_word.id).first().tags):
+                sys_word.tags.add(tag)
 
 class WordClassAdmin(ImportExportModelAdmin):
     resource_class = WordClassResource
@@ -80,9 +98,19 @@ class ExampleAdmin(ImportExportModelAdmin):
 class ConstituentAdmin(ImportExportModelAdmin):
     resource_class = ConstituentResource
 
+class TaggedItemInline(admin.StackedInline):
+    model = TaggedItem
+    
+class TagAdmin(ImportExportModelAdmin):
+    resource_class = TagResource
+    inlines = [TaggedItemInline]
+
 admin.site.register(Word, WordAdmin)
 admin.site.register(SysWordJapanese)
 admin.site.register(SysWordThai)
 admin.site.register(WordClass,WordClassAdmin)
 admin.site.register(Example, ExampleAdmin)
 admin.site.register(Constituent, ConstituentAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(TaggedItem)
+

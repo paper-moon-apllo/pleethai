@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'sass_processor',
     'import_export',
     'crispy_forms',
-    'pleethai'
+    'pleethai',
+    'taggit'
 ]
 
 MIDDLEWARE = [

@@ -4,60 +4,130 @@ var WAIT_TIME = 500;
 
 var wordPage = 0;
 var examplePage = 0;
-var timer;
+var holdFlag = false;
+var clearFlag = false;
+var badgeClickedFlag = false;
+var searchedFlag = false;
+var inputTimer;
+var clickTimer;
 
 $(document).ready(function(){
     loadWordList();
     loadExampleList();
+    loadTagList();
 
+    // Search
+    $('#content').on('input', '#keyword', function(e) { 
+        initTimer();
+    })
+    .on('keyup', function(e) { 
+        if (e.which == 13) {
+            //if not pc, hide keyboard
+            if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
+                $("#keyword").blur();
+            }
+        }
+    })
+    // Show tags modal
+    .on('click', '#tagbutton', function() {
+        $("#tag-modal").modal("show");
+    })
+    // Clear keyword and tags
+    .on('click', '#clearbutton', function() {
+        allToggleOff();
+        $('#keyword').val('');
+        search();
+    })
     // Change backgroundcolor of selected item
-    $('#searchcontainer').on('mouseenter', '.row-word, .row-example', function() {
+    .on('mouseenter', '.row-word, .row-example, .modallink', function() {
         $(this).addClass('bg-light');
-    });
-    $('#searchcontainer').on('mouseleave', '.row-word, .row-example', function() {
+    })
+    .on('mouseleave', '.row-word, .row-example, .modallink', function() {
         $(this).removeClass('bg-light');
-    });
-
-    // Show detail modal
-    $('#searchcontainer').on('click', '.row-word, .row-example', function(e) {
-        e.preventDefault();
-        $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
-            $("#word-detail-modal").modal("show");
-        });
-    });
-
-    // load items
-    $('#searchcontainer').on('inview', '#wordbottom', function(e, isInView) {
+    })
+    // Show detail modal *dont show when hold
+    .on('mousedown', '.row-word, .row-example, .modallink', function() {
+        holdFlag = false;
+        clickTimer =setTimeout(function(){
+            holdFlag = true;
+        }, 350);
+    })
+    .on('mouseup', '.row-word, .row-example, .modallink', function(e) {
+        if (clickTimer) {
+            clearTimeout(clickTimer);
+        }
+        if ($(e.target).is('.tag-badge')) {
+            return;
+        }
+        // If selected text, return
+        if(window.getSelection) {
+            selectedStr = window.getSelection().toString();
+            if(selectedStr !== '' && selectedStr !== '\n') {
+              return;
+            }
+        }
+        if (!holdFlag) {
+            if ($(this).is('.row-word, .row-example')) {
+                $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
+                    $("#detail-modal").modal("show");
+                });
+            } else if($(this).is('.modallink')) {
+                $("#detail-modal .modal-content").load($(this).attr("href"));
+            }
+        }
+    })
+    // Load items
+    .on('inview', '#wordbottom', function(e, isInView) {
         if (isInView && $('.row-word').length >= 20) {
             loadWordList();
         }
-    });
-    $('#searchcontainer').on('inview', '#examplebottom', function(e, isInView) {
+    })
+    .on('inview', '#examplebottom', function(e, isInView) {
         if (isInView && $('.row-example').length >= 20) {
             loadExampleList();
         }
-    });
-});
-
-// Search
-$('#keyword').on('keyup cut paste', function(e) { 
-    if (e.type == 'keyup' && e.which == 13) {
-        //if not pc, hide keyboard
-        if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
-            $("#keyword").blur();
+    })
+    // Create toggles
+    .on('shown.bs.modal', '#tag-modal', function() {
+        $('.tag-toggle').bootstrapToggle();
+    })
+    // Search by change toggle
+    .on('change', '.tag-toggle', function(e) {
+        if (!clearFlag) {
+            if (!searchedFlag) {
+                search();
+            }
+            if (badgeClickedFlag) {
+                searchedFlag = true;
+            }
         }
-        //If hit enter key, not staart timer
-        return;
-    }
-    initTimer();
+    })
+    .on('click', '#tagclearbutton', function() {
+        allToggleOff();
+        search();
+    })
+    // Click tag in search result
+    .on('click', '.tag-badge', function() {
+        badgeClickedFlag = true;
+        // clear all tag toggles
+        allToggleOff();
+        // check selected tag
+        $('#keyword').val('');
+        var value =  $(this).attr('value');
+        $('#tag-toggle' + value).prop('checked', true).change();
+        // close modal
+        $('#detail-modal').modal('hide');
+        badgeClickedFlag = false;
+        searchedFlag = false;
+    });
 });
 
 function initTimer() {
     //reset timer
-    if (timer) {
-        clearTimeout(timer);
+    if (inputTimer) {
+        clearTimeout(inputTimer);
     }
-    timer = setTimeout(search, WAIT_TIME);
+    inputTimer = setTimeout(search, WAIT_TIME);
 }
 
 function search() {
@@ -77,6 +147,7 @@ function loadWordList() {
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
+            'tags' : getTags(),
             'page' : wordPage,
         },
         'dataType': 'text'
@@ -99,7 +170,6 @@ function loadWordList() {
     .always( () => {
         $('#wordloading').hide();
     });
-    
 }
 
 function loadExampleList() {
@@ -110,6 +180,7 @@ function loadExampleList() {
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
+            'tags' : getTags(),
             'page' : examplePage,
         },
         'dataType': 'text'
@@ -133,3 +204,41 @@ function loadExampleList() {
     });
 }
 
+function loadTagList() {
+    $('#tagloading').show();
+    $.ajax({
+        'url': 'tags',
+        'type': 'GET',
+        'dataType': 'text'
+    })
+    .done( response => {
+        if (!response) {
+            $('#tag-modal-content').append('<div class="alert alert-warning">'
+            + NO_RESULT_MESSAGE + '</div>');
+        } else {
+            $('#tag-modal-content .alert').remove();
+            $('#tag-modal-content').append(response);
+        }
+    })
+    .fail( () => {
+        $('#tag-modal-content').append('<div class="alert alert-danger">'
+        + SERVER_ERROR_MESSAGE + '</div>');
+    })
+    .always( () => {
+        $('#tagloading').hide();
+    });
+}
+
+// Clear tags
+function allToggleOff() {
+    clearFlag = true;
+    $('.tag-toggle').prop('checked', false).change();
+    clearFlag = false;
+}
+
+// Get selected tags
+function getTags() {
+    return $('.tag-toggle:checked').map(function(){
+        return $(this).val();
+    }).get();
+}

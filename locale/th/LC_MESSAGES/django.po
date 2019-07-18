@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-29 08:37+0700\n"
+"POT-Creation-Date: 2019-07-09 14:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,6 +65,15 @@ msgstr "คำและประโยค"
 msgid "リクエスト"
 msgstr "ขอร้อง"
 
+#: .\pleethai\templates\example_detail.html:27
+msgid "構成語"
+msgstr "คำศัพท์ประกอบ"
+
+#: .\pleethai\templates\example_detail.html:44
+#: .\pleethai\templates\tags.html:18 .\pleethai\templates\word_detail.html:55
+msgid "閉じる"
+msgstr "ปิด"
+
 #: .\pleethai\templates\request.html:14
 msgid "確認"
 msgstr "ยืนยัน"
@@ -94,3 +103,27 @@ msgstr "ส่ง"
 #: .\pleethai\templates\request_confirm.html:37
 msgid "修正"
 msgstr "แก้ไข่"
+
+#: .\pleethai\templates\search.html:18
+msgid "検索ワード"
+msgstr "คำหา"
+
+#: .\pleethai\templates\search.html:19
+msgid "タグ"
+msgstr "แท็ก"
+
+#: .\pleethai\templates\search.html:25
+msgid "単語"
+msgstr "คำศัพท์"
+
+#: .\pleethai\templates\search.html:28 .\pleethai\templates\word_detail.html:41
+msgid "例文"
+msgstr "ตัวอย่างประโยค"
+
+#: .\pleethai\templates\tags.html:17
+msgid "クリア"
+msgstr "สะสาง"
+
+#: .\pleethai\templates\word_detail.html:26
+msgid "定義"
+msgstr "ความหมาย"

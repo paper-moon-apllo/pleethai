@@ -1,11 +1,25 @@
-{% load tags %}
-<div class="row row-example" href="/example/{{ object.id }}/" data-toggle="modal" data-target="#detail-modal">
-    <div class="col-12 col-md-6">
+{% load i18n tags %}
+<div class="row row-example" href="/example/{{ object.id }}/">
+    <div class="col-12 col-md-5">
         <div><h5>{{ object.japanese }}</h5></div>
         <div>{{ object.hiragana }}</div>
         <div>{{ object.roman }}</div>
     </div>
-    <div class="col-12 col-md-6">
+    <div class="col-2">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% with object.id|get_tag_list as tag_list %}
+            {% for tag in tag_list %}
+                {% if LANGUAGE_CODE == "ja" %}
+                    <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.name }}</div>
+                {% elif LANGUAGE_CODE == "th" %}
+                    <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.thai }}</div>
+                {% else %}
+                    <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.slug }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+    </div>
+    <div class="col-12 col-md-5">
         <div><h5>{{ object.thai }}</h5></div>
     </div>
 </div>

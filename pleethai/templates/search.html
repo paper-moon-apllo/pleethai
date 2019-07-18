@@ -1,24 +1,32 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load i18n static %}
 {% block title %}PleeThai{% endblock %}
 {% block extra_js %}
-<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap4-toggle.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/bootstrap4-toggle.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="m-2">
-    <form action="#">
-        <input id="keyword" class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <form action="#" class="form-inline">
+        <input id="keyword" class="form-control col-6" type="text" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
+        <button id="tagbutton" type="button" class="btn btn-primary col-3">{% trans 'タグ' %}</button>
+        <button id="clearbutton" type="button" class="btn btn-info col-3">{% trans 'クリア' %}</button>
     </form>
 </div>
 <!-- Tab Navigation -->
 <ul class="nav nav-tabs nav-fill" role="tablist">
     <li class="nav-item">
-      <a id="nav1" href="#tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="tab1" aria-selected="true">Word</a>
+      <a id="nav1" href="#tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="tab1" aria-selected="true">{% trans '単語' %}</a>
     </li>
     <li class="nav-item">
-      <a id="nav2" href="#tab2" class="nav-item nav-link" data-toggle="tab" aria-controls="tab2" aria-selected="false">Example</a>
+      <a id="nav2" href="#tab2" class="nav-item nav-link" data-toggle="tab" aria-controls="tab2" aria-selected="false">{% trans '例文' %}</a>
     </li>
 </ul>
 <div class="tab-content" id="searchcontainer">
@@ -41,8 +49,20 @@
 </div>
 <!-- Detail Modal -->
 <div class="modal fade" id="detail-modal">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content"></div>
+    </div>
+</div>
+
+<!-- Tag Modal -->
+<div class="modal fade show" id="tag-modal">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div id="tag-modal-content" class="modal-content">
+            <div class="d-flex justify-content-center">
+                <div id="tagloading" class="spinner-border text-primary"></div>
+            </div>
+        </div>
+        
     </div>
 </div>
 {% endblock %}

@@ -25,6 +25,7 @@ urlpatterns = [
     path('example/<int:pk>/', views_dictionary.ExampleDetailView.as_view(), name='example_detail'),
     path('searchword', views_dictionary.search_word, name='search_word'),
     path('searchexample', views_dictionary.search_example, name='search_example'),
+    path('tags', views_dictionary.tags_all, name='tags'),
     path('mail/input/', views_request.MailInput.as_view(), name='mail_input'),
     path('mail/confirm/', views_request.MailConfirm.as_view(), name='mail_confirm'),
     path('mail/complete/', views_request.MailComplete.as_view(), name='mail_complete'),
