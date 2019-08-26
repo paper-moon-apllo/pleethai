@@ -27,16 +27,15 @@
             <hr>
             <div><h5>{% trans '構成語' %}</h5></div>
             {% for const in const_list %}
-                <div class="card mb-2 modallink" href="/word/{{ const.word_id.id }}/">
-                    <div class="card-body">
-                        <div><h6>{{ forloop.counter }}. {{ const.word_id.japanese }}</h6></div>
-                        <div>{{ const.word_id.hiragana }}</div>
-                        <div>{{ const.word_id.thai }}</div>
-                        {% with const.word_id.id|get_first_thai as thai_obj %}
-                            <div>{{ thai_obj.thai }}</div>
-                        {% endwith %}
+                {% with const.word_id.japanese_id.id|get_japanese as jp_obj %}
+                    <div class="card mb-2 modallink" href="/word/{{ jp_obj.id }}/">
+                        <div class="card-body">
+                            <div><h6>{{ forloop.counter }}. {{ jp_obj.japanese }}</h6></div>
+                            <div>{{ jp_obj.hiragana }}</div>
+                            <div>{{ const.word_id.thai }}</div>
+                        </div>
                     </div>
-                </div>
+                {% endwith %}
             {% endfor %}
         {% endif %}
     {% endwith %}
