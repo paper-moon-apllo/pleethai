@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from pleethai.models import Word, SysWordJapanese, SysWordThai, WordClass, Example, Constituent, Tag, TaggedItem
 from pleethai.common import Common
 from taggit.utils import _parse_tags
+from django.db import models
 
 class WordResource(resources.ModelResource):
 
@@ -52,6 +53,11 @@ class WordAdmin(ImportExportModelAdmin):
             return False
         return sys_ja.japanese == word.japanese and sys_ja.hiragana == word.hiragana
 
+    def delete_all(self, model: models.Model):
+        while model.objects.count():
+            ids = model.objects.values_list('pk', flat=True)[:100]
+            model.objects.filter(pk__in = ids).delete()
+            
     # Create Sys_word_Japanse table and Sys_Word_Thai table from Word table
     def update_system_tables(self, request):
         all_words = Word.objects.all()
@@ -70,9 +76,9 @@ class WordAdmin(ImportExportModelAdmin):
             # delete and recreate
             for con_dict in Constituent.objects.values():
                 temp_constituent.append(Constituent(**con_dict))
-            Constituent.objects.all().delete()
-            SysWordThai.objects.all().delete()
-            SysWordJapanese.objects.all().delete()
+            self.delete_all(Constituent)
+            self.delete_all(SysWordThai)
+            self.delete_all(SysWordJapanese)
             SysWordJapanese.objects.bulk_create(sys_japanese)
             SysWordThai.objects.bulk_create(sys_thai)
             Constituent.objects.bulk_create(temp_constituent)
