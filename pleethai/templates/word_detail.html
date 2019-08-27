@@ -28,9 +28,10 @@
         {% for thai in thai_list %}
             <div class="card mb-2">
                 <div class="card-body">
-                    <div><h6>{{ forloop.counter }}. {{ thai.thai }}</h6></div>
-                    <div>{{ thai.pronunciation_symbol }} {{ thai.pronunciation_kana }}</div>
-                    <div>{{ thai.english }}</div>
+                    <div class="row">
+                        <div class="col-6"><h6>{{ forloop.counter }}. {{ thai.thai }}</h6></div>
+                        <div class="col-6"><h6>{{ thai.english }}</h6></div>
+                    </div>
                 </div>
             </div>
         {% endfor %}

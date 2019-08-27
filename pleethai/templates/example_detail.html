@@ -19,8 +19,6 @@
     </div>
     <hr>
     <div><h4>{{ object.thai }}</h4></div>
-    <div>{{ object.pronunciation_symbol }}</div>
-    <div>{{ object.pronunciation_kana }}</div>
     <div>{{ object.english }}</div>
     {% with object.id|get_const_list as const_list %}
         {% if const_list %}
@@ -30,15 +28,16 @@
                 {% with const.word_id.japanese_id.id|get_japanese as jp_obj %}
                     <div class="card mb-2 modallink" href="/word/{{ jp_obj.id }}/">
                         <div class="card-body">
-                            <div><h6>{{ forloop.counter }}. {{ jp_obj.japanese }}</h6></div>
-                            <div>{{ jp_obj.hiragana }}</div>
-                            <div>{{ const.word_id.thai }}</div>
+                            <div class="row">
+                                <div class="col-6"><h6>{{ forloop.counter }}. {{ jp_obj.japanese }} {{ jp_obj.roman }}</h6></div>
+                                <div class="col-6"><h6>{{ const.word_id.thai }}</h6></div>
+                            </div>  
                         </div>
                     </div>
                 {% endwith %}
             {% endfor %}
         {% endif %}
-    {% endwith %}
+    {% endwith %} 
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-danger" data-dismiss="modal">{% trans '閉じる' %}</button>
