@@ -126,7 +126,7 @@ class Example (models.Model):
 class Constituent (models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     example_id = models.ForeignKey("Example", on_delete=models.PROTECT)
-    word_id = models.ForeignKey("SysWordJapanese", on_delete=models.PROTECT)
+    word_id = models.ForeignKey("SysWordThai", on_delete=models.PROTECT)
     order = models.PositiveSmallIntegerField(null=False)
 
     class Meta:
@@ -134,7 +134,3 @@ class Constituent (models.Model):
 
     def __str__(self):
         return str(self.example_id) + ", " + str(self.word_id) + ", " + str(self.order)
-
-
-
-

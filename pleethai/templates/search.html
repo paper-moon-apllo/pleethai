@@ -14,10 +14,16 @@
 
 {% block content %}
 <div class="m-2">
-    <form action="#" class="form-inline">
-        <input id="keyword" class="form-control col-6" type="text" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
-        <button id="tagbutton" type="button" class="btn btn-primary col-3">{% trans 'タグ' %}</button>
-        <button id="clearbutton" type="button" class="btn btn-info col-3">{% trans 'クリア' %}</button>
+    <form action="#">
+        <div class="form-inline">
+            <div class="input-group flex-fill">
+                <input id="keyword" class="form-control" type="text" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
+                <div class="input-group-append">
+                    <button id="tagbutton" type="button" class="btn btn-primary">{% trans 'タグ' %}</button>
+                    <button id="clearbutton" type="button" class="btn btn-info">{% trans 'クリア' %}</button>
+                </div> 
+            </div>
+        </div>
     </form>
 </div>
 <!-- Tab Navigation -->
