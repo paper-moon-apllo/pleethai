@@ -13,26 +13,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="m-2">
-    <form action="#">
-        <div class="form-inline">
-            <div class="input-group flex-fill">
-                <input id="keyword" class="form-control" type="text" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
-                <div class="input-group-append">
-                    <button id="tagbutton" type="button" class="btn btn-primary">{% trans 'タグ' %}</button>
-                    <button id="clearbutton" type="button" class="btn btn-info">{% trans 'クリア' %}</button>
-                </div> 
-            </div>
-        </div>
+<nav class="navbar navbar-expand navbar-dark search">
+    <form class="form-inline w-50 ml-auto">
+        <input id="keyword" class="keyword-box" type="search" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
     </form>
-</div>
+    <button id="tagbutton" class="nav-btn" type="button">{% trans 'タグ' %}</button>
+    <button id="clearbutton" class="nav-btn" type="button">{% trans 'クリア' %}</button> 
+</nav>
 <!-- Tab Navigation -->
-<ul class="nav nav-tabs nav-fill" role="tablist">
+<ul class="nav nav-fill" role="tablist">
     <li class="nav-item">
-      <a id="nav1" href="#tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="tab1" aria-selected="true">{% trans '単語' %}</a>
+      <a id="nav1" href="#tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="tab1" aria-selected="true"><span class="tab-text">{% trans '単語' %}</span></a>
     </li>
     <li class="nav-item">
-      <a id="nav2" href="#tab2" class="nav-item nav-link" data-toggle="tab" aria-controls="tab2" aria-selected="false">{% trans '例文' %}</a>
+      <a id="nav2" href="#tab2" class="nav-item nav-link" data-toggle="tab" aria-controls="tab2" aria-selected="false"><span class="tab-text">{% trans '例文' %}</span></a>
     </li>
 </ul>
 <div class="tab-content" id="searchcontainer">

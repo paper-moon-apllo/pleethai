@@ -39,20 +39,26 @@ $(document).ready(function(){
         search();
     })
     // Change backgroundcolor of selected item
-    .on('mouseenter', '.row-word, .row-example, .modallink', function() {
-        $(this).addClass('bg-light');
+    .on('mouseenter', '.row-word, .modallink-word', function() {
+        $(this).addClass('hover-word');
     })
-    .on('mouseleave', '.row-word, .row-example, .modallink', function() {
-        $(this).removeClass('bg-light');
+    .on('mouseenter', '.row-example, .modallink-example', function() {
+        $(this).addClass('hover-example');
+    })
+    .on('mouseleave', '.row-word, .modallink-word', function() {
+        $(this).removeClass('hover-word');
+    })
+    .on('mouseleave', '.row-example, .modallink-example', function() {
+        $(this).removeClass('hover-example');
     })
     // Show detail modal *dont show when hold
-    .on('mousedown', '.row-word, .row-example, .modallink', function() {
+    .on('mousedown', '.row-word, .row-example, .modallink-word, .modallink-example', function() {
         holdFlag = false;
         clickTimer =setTimeout(function(){
             holdFlag = true;
         }, 350);
     })
-    .on('mouseup', '.row-word, .row-example, .modallink', function(e) {
+    .on('mouseup', '.row-word, .row-example, .modallink-word, .modallink-example', function(e) {
         if (clickTimer) {
             clearTimeout(clickTimer);
         }
@@ -71,7 +77,7 @@ $(document).ready(function(){
                 $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
                     $("#detail-modal").modal("show");
                 });
-            } else if($(this).is('.modallink')) {
+            } else if($(this).is('.modallink-word, .modallink-example')) {
                 $("#detail-modal .modal-content").load($(this).attr("href"));
             }
         }

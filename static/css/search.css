@@ -1,7 +1,104 @@
 div.toggle {
     margin: 5px;
 }
-
 div.tag-badge {
     cursor: pointer;
+}
+nav.search {
+    background-color: #097f9d;
+}
+input.keyword-box {
+    border: none;
+    width: 100%;
+}
+button.nav-btn {
+    background-image: url("../img/nav-btn.png");
+    width: 71px;
+    height: 30px;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: 10px;
+    color: white;
+}
+li.nav-item {
+    width: 50%;
+    margin: 10px 0 10px 0;
+}
+#nav1 {
+    height: auto;
+    background-image: url("../img/word.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% auto;
+    padding: 3% 0 3% 0;
+}
+#nav1.active {
+    background-image: url("../img/word-select.png");
+}
+#nav1:hover {
+    background-image: url("../img/word-select.png");
+    background-color: #cee5eb;
+}
+#nav2 {
+    height: auto;
+    background-image: url("../img/example.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% auto;
+    padding: 3% 0 3% 0;
+}
+#nav2.active {
+    background-image: url("../img/example-select.png");
+}
+#nav2:hover {
+    background-image: url("../img/example-select.png");
+    background-color: #f8eded;
+}
+span.tab-text {
+    bottom: 20%;
+    width: 100%;
+    right:    0;
+}
+.hover-word {
+    background-color: #cee5eb;
+}
+.hover-example {
+    background-color: #f8eded;
+}
+.badge {
+    font-size: 90%;
+    font-weight: 500;
+}
+.verv {
+    color: white;
+    background-color: #097f9d;
+}
+.adjective {
+    color: white;
+    background-color: #a3181e;
+}
+.noun {
+    color: white;
+    background-color: #00a562;
+}
+.adverb {
+    color: white;
+    background-color: #006e59;
+}
+.auxiliary_verb {
+    color: white;
+    background-color: #ddb717;
+}
+.conjunction {
+    color: white;
+    background-color: #714d77;
+}
+.preposition {
+    color: white;
+    background-color: #542400;
+}
+.pronoun {
+    color: white;
+    background-color: #918f8f;
 }
