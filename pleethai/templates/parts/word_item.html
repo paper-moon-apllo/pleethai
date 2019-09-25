@@ -12,7 +12,8 @@
             {% else %}
                 <div class="badge {{ object.wordclass_id.slug }}">{{ object.wordclass_id.slug }}</div>
             {% endif %}
-             Hit: {{ object.searchs }}</div>
+            <div class="text-nowrap">Hit: {{ object.searchs }}</div>
+        </div>
     </div>
     <div class="col-sm-3">
         {% for tag in object.tags.all %}
@@ -27,7 +28,7 @@
     </div>
     <div class="col-sm-5">
     {% with object.id|get_thai_list as thai_list %}
-        <table class="table table-borderless table-sm">
+        <table class="table table-borderless table-trans">
             <tbody>
                 {% for thai in thai_list %}
                     <tr>
