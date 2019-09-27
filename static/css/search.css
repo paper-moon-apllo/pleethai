@@ -60,6 +60,12 @@ span.tab-text {
     width: 100%;
     right:    0;
 }
+span.tab-text-word {
+    color: #097f9d;
+}
+span.tab-text-example {
+    color: #a3181e;
+}
 .hover-word {
     background-color: #cee5eb;
 }
@@ -67,8 +73,10 @@ span.tab-text {
     background-color: #f8eded;
 }
 .badge {
-    font-size: 90%;
+    font-size: 100%;
     font-weight: 500;
+    padding: .4em;
+    margin: 0 .1em .2em 0;
 }
 .verv {
     color: white;

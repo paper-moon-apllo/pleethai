@@ -62,17 +62,17 @@
                 <ul class="list-group">
                     <a class="list-group-item list-group-item-action" href="{% url 'search' %}" role="button"><span class="btn-text">{% trans '単語・例文' %}</span></a>
                     <a class="list-group-item list-group-item-action" href="{% url 'mail_input' %}" role="button"><span class="btn-text">{% trans 'リクエスト' %}</span></a>
-                    <form id="menu-form-th" name="trans"  action="{% url 'set_language' %}" method="post">
+                    <form id="menu-form-th" class="list-group-item list-group-item-action" name="trans"  action="{% url 'set_language' %}" method="post">
                         {% csrf_token %}
                         {% for field in form %}{{ field.as_hidden }}{% endfor %}
                         <input type="hidden" name="language" value="th">
-                        <a href="#" onclick="document.getElementById('menu-form-th').submit()" class="list-group-item list-group-item-action"><img class="menu-img" src="{% static 'img/thaiflag.png' %}"></a>
+                        <a href="#" onclick="document.getElementById('menu-form-th').submit()" class="list-group-item-action"><span class="menu-span">{% trans 'タイ語' %}</span><img class="menu-img" src="{% static 'img/thaiflag.png' %}"></a>
                     </form>
-                    <form id="menu-form-ja" name="trans" action="{% url 'set_language' %}" method="post">
+                    <form id="menu-form-ja" class="list-group-item list-group-item-action" name="trans" action="{% url 'set_language' %}" method="post">
                         {% csrf_token %}
                         {% for field in form %}{{ field.as_hidden }}{% endfor %}
                         <input type="hidden" name="language" value="ja">
-                        <a href="#" onclick="document.getElementById('menu-form-ja').submit()" class="list-group-item list-group-item-action"><img class="menu-img" src="{% static 'img/japanflag.png' %}"></a>
+                        <a href="#" onclick="document.getElementById('menu-form-ja').submit()" class="list-group-item-action"><span class="menu-span">{% trans '日本語' %}</span><img class="menu-img" src="{% static 'img/japanflag.png' %}"></a>
                     </form>
                 </ul>
 

@@ -14,7 +14,7 @@
 
 {% block content %}
 <nav class="navbar navbar-expand navbar-dark search">
-    <form class="form-inline w-50 ml-auto">
+    <form class="form-inline w-50 flex-fill flex-md-grow-0 ml-auto">
         <input id="keyword" class="keyword-box" type="search" placeholder="{% trans '検索ワード' %}" aria-label="{% trans '検索ワード' %}">
     </form>
     <button id="tagbutton" class="nav-btn" type="button">{% trans 'タグ' %}</button>
@@ -23,10 +23,10 @@
 <!-- Tab Navigation -->
 <ul class="nav nav-fill" role="tablist">
     <li class="nav-item">
-      <a id="nav1" href="#tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="tab1" aria-selected="true"><span class="tab-text">{% trans '単語' %}</span></a>
+      <a id="nav1" href="#tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="tab1" aria-selected="true"><span class="tab-text tab-text-word">{% trans '単語' %}</span></a>
     </li>
     <li class="nav-item">
-      <a id="nav2" href="#tab2" class="nav-item nav-link" data-toggle="tab" aria-controls="tab2" aria-selected="false"><span class="tab-text">{% trans '例文' %}</span></a>
+      <a id="nav2" href="#tab2" class="nav-item nav-link" data-toggle="tab" aria-controls="tab2" aria-selected="false"><span class="tab-text tab-text-example">{% trans '例文' %}</span></a>
     </li>
 </ul>
 <div class="tab-content" id="searchcontainer">

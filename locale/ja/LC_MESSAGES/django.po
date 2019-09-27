@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 10:51+0700\n"
+"POT-Creation-Date: 2019-09-27 12:53+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,21 +58,29 @@ msgstr ""
 msgid "メールアドレスが確認用と一致しません。"
 msgstr "メールアドレスが確認用と一致しません。"
 
-#: .\pleethai\templates\base.html:22
+#: .\pleethai\templates\base.html:41 .\pleethai\templates\base.html:63
 msgid "単語・例文"
 msgstr "単語・例文"
 
-#: .\pleethai\templates\base.html:25 .\pleethai\templates\request.html:5
-#: .\pleethai\templates\request.html:11
+#: .\pleethai\templates\base.html:44 .\pleethai\templates\base.html:64
+#: .\pleethai\templates\request.html:5 .\pleethai\templates\request.html:11
 msgid "リクエスト"
 msgstr "リクエスト"
 
-#: .\pleethai\templates\example_detail.html:28
+#: .\pleethai\templates\base.html:69
+msgid "タイ語"
+msgstr "タイ語"
+
+#: .\pleethai\templates\base.html:75
+msgid "日本語"
+msgstr "日本語"
+
+#: .\pleethai\templates\example_detail.html:26
 msgid "構成語"
 msgstr "構成語"
 
-#: .\pleethai\templates\example_detail.html:45
-#: .\pleethai\templates\tags.html:18 .\pleethai\templates\word_detail.html:55
+#: .\pleethai\templates\example_detail.html:43
+#: .\pleethai\templates\tags.html:18 .\pleethai\templates\word_detail.html:56
 msgid "閉じる"
 msgstr "閉じる"
 
@@ -110,11 +118,11 @@ msgstr "修正"
 msgid "検索ワード"
 msgstr "検索ワード"
 
-#: .\pleethai\templates\search.html:19
+#: .\pleethai\templates\search.html:20
 msgid "タグ"
 msgstr "タグ"
 
-#: .\pleethai\templates\search.html:20 .\pleethai\templates\tags.html:17
+#: .\pleethai\templates\search.html:21 .\pleethai\templates\tags.html:17
 msgid "クリア"
 msgstr "クリア"
 
@@ -122,8 +130,7 @@ msgstr "クリア"
 msgid "単語"
 msgstr "単語"
 
-#: .\pleethai\templates\search.html:29
-#: .\pleethai\templates\word_detail.html:41
+#: .\pleethai\templates\search.html:29 .\pleethai\templates\word_detail.html:42
 msgid "例文"
 msgstr "例文"
 
