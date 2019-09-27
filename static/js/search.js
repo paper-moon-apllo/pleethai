@@ -80,6 +80,10 @@ $(document).ready(function(){
             } else if($(this).is('.modallink-word, .modallink-example')) {
                 $("#detail-modal .modal-content").load($(this).attr("href"));
             }
+            gtag('js', new Date());
+            gtag('config', 'UA-147976194-1', {
+                'page_path': $(this).attr("href")
+            });
         }
     })
     // Load items
@@ -147,14 +151,18 @@ function search() {
 
 function loadWordList() {
     $('#wordloading').show();
+    gtag('js', new Date());
+    gtag('config', 'UA-147976194-1', {
+        'page_path': '/wordsearch' + CreateQuery()
+    });
     wordPage++;
     $.ajax({
         'url': 'searchword',
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
-            'tags' : getTags(),
-            'page' : wordPage,
+            'tags': getTags(),
+            'page': wordPage,
         },
         'dataType': 'text'
     })
@@ -180,14 +188,18 @@ function loadWordList() {
 
 function loadExampleList() {
     $('#exampleloading').show();
+    gtag('js', new Date());
+    gtag('config', 'UA-147976194-1', {
+        'page_path': '/examplesearch' + CreateQuery()
+    });
     examplePage++;
     $.ajax({
         'url': 'searchexample',
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
-            'tags' : getTags(),
-            'page' : examplePage,
+            'tags': getTags(),
+            'page': examplePage,
         },
         'dataType': 'text'
     })
@@ -246,5 +258,19 @@ function allToggleOff() {
 function getTags() {
     return $('.tag-toggle:checked').map(function(){
         return $(this).val();
-    }).get();
+    }).get().join('+');
+}
+
+// Creaete query for Google Analytics
+function CreateQuery() {
+    var query = "";
+    if ($('#keyword').val()) {
+        query = "?keyword=" + $('#keyword').val();
+        if (getTags()) {
+            query += "&tags=" + getTags();
+        }
+    } else if (getTags()) {
+        query += "?tags=" + getTags();
+    }
+    return query;
 }
