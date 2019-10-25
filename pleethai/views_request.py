@@ -20,13 +20,6 @@ class MailInput(FormView):
         '''
         return render(self.request, self.template_name, {'form': form})
 
-    def get(self, *args, **kwargs):
-        '''called when redirect change UI language process
-        '''
-        session = self.request.session
-        context = {"form": RequestForm(
-            initial={k: v[0] for k, v in zip(session.keys(), session.values())})}
-        return render(self.request, self.template_name, context)
 
 class MailConfirm(FormView):
     template_name = 'request_confirm.html'
@@ -38,26 +31,25 @@ class MailConfirm(FormView):
     def form_valid(self, form):
         '''called when valid form data has been POSTed from request input
         '''
-        # set value as session data
-        self.request.session.update(self.request.POST)
         return render(self.request, self.template_name, {'form': form})
 
     def form_invalid(self, form):
         '''called when invalid form data has been POSTed from request input
         '''
         return render(self.request, self.back_template_name, {'form': form})
-    
+
     def get(self, *args, **kwargs):
         '''called when redirect change UI language process
         '''
-        session = self.request.session
-        context = {"form": RequestForm(initial={k:v[0] for k,v in zip(session.keys(), session.values())})}
-        return render(self.request, self.template_name, context)
+        # open with empty form
+        context = {"form": RequestForm()}
+        return render(self.request, self.back_template_name, context)
+
 
 class MailComplete(FormView):
     template_name = 'request_complete.html'
     form_class = RequestForm
-    http_method_names = ['get','post']
+    http_method_names = ['get', 'post']
 
     def form_valid(self, form):
         '''called when valid form data has been POSTed from request confirm
@@ -68,8 +60,6 @@ class MailComplete(FormView):
             "form": form,
         }
         request_mail_send(context)
-        # session clear
-        self.request.session.clear()
         # render templte
         return render(self.request, self.template_name, {'form': form})
 
