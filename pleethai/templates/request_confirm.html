@@ -6,18 +6,20 @@
 <div class="col">
     {% trans 'リクエスト内容確認' %}
 </div>
-<div class="container border rounded">
-    <div class="form-group">
-        <label for="{{ form.name.id_for_label }}">{{ form.name.label_tag }}</label>
-        {{ form.name.value }}
+<div class="container border rounded my-2 py-2">
+    <div class="container">
+        {{ form.name.label_tag }}
+        <p class="text-break">{{ form.name.value }}</p>
     </div>
-    <div class="form-group">
-        <label for="{{ form.mail1.id_for_label }}">{{ form.mail1.label_tag }}</label>
-        {{ form.mail1.value }}
+    <hr>
+    <div class="container">
+        {{ form.mail1.label_tag }}
+        <p class="text-break">{{ form.mail1.value }}</p>
     </div>
-    <div class="form-group">
-        <label for="{{ form.content.id_for_label }}">{{ form.content.label_tag }}</label>
-        {{ form.content.value }}
+    <hr>
+    <div class="container">
+        {{ form.content.label_tag }}
+        <p class="text-break">{{ form.content.value }}</p>
     </div>
 </div>
 <div class="col">
