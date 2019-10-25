@@ -3,6 +3,9 @@
 {% load crispy_forms_tags %}
 
 {% block title %}{% trans 'リクエスト' %}{% endblock title %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/request.css' %}">
+{% endblock %}
 
 {% block content %}
 <form name='req_form' action="{% url 'mail_confirm' %}" method="post" novalidate="novalidate">
