@@ -36,26 +36,29 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse justify-content-end flex-nowrap">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link btn-dic" href="{% url 'search' %}" role="button"><span class="btn-text">{% trans '単語・例文' %}</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-req" href="{% url 'mail_input' %}" role="button"><span class="btn-text">{% trans 'リクエスト' %}</span></a>
-                    </li>
-                </ul>
-                <form name="trans" class="lang-flag form-inline" action="{% url 'set_language' %}" method="post">
+                <form name="trans" id="trans" class="lang-flag form-inline" action="{% url 'set_language' %}" method="post">
                     {% csrf_token %}
                     {% for field in form %}{{ field.as_hidden }}{% endfor %}
-                    <input type="hidden" name="language" value="th">
-                    <input class="flag" type="image" src="{% static 'img/thaiflag.png' %}" alt="Thai">
                 </form>
-                <form name="trans" class="lang-flag form-inline" action="{% url 'set_language' %}" method="post">
-                        {% csrf_token %}
-                        {% for field in form %}{{ field.as_hidden }}{% endfor %}
-                        <input type="hidden" name="language" value="ja">
-                        <input class="flag" type="image" src="{% static 'img/japanflag.png' %}" alt="Japanese">
-                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item-base">
+                        <div class="btn-dic">
+                            <a class="nav-link btn-link" href="{% url 'search' %}" role="button"><span class="btn-text">{% trans '単語・例文' %}</span></a>
+                        </div>
+                        
+                    </li>
+                    <li class="nav-item-base">
+                        <div class="btn-req">
+                            <a class="nav-link btn-link" href="{% url 'mail_input' %}" role="button"><span class="btn-text">{% trans 'リクエスト' %}</span></a>
+                        </div>
+                    </li>
+                    <li class="nav-item-base">
+                        <button class="btn" type="submit" form="trans" name="language" value="th"><img src="{% static 'img/thaiflag.png' %}" alt="Thai"></button>
+                    </li>
+                    <li class="nav-item-base">
+                        <button class="btn" type="submit" form="trans" name="language" value="ja"><img src="{% static 'img/japanflag.png' %}" alt="Japanese"></button>
+                    </li>
+                </ul>
             </div>
         </nav>
         <div class="collapse text-right" id="nav-items">
@@ -66,13 +69,13 @@
                         {% csrf_token %}
                         {% for field in form %}{{ field.as_hidden }}{% endfor %}
                         <input type="hidden" name="language" value="th">
-                        <a href="#" onclick="document.getElementById('menu-form-th').submit()" class="list-group-item-action"><span class="menu-span">{% trans 'タイ語' %}</span><img class="menu-img" src="{% static 'img/thaiflag.png' %}"></a>
+                        <a href="#" onclick="document.getElementById('menu-form-th').submit()" class="list-group-item-action"><span class="menu-span">ภาษาไทย / タイ語</span><img class="menu-img" src="{% static 'img/thaiflag.png' %}"></a>
                     </form>
                     <form id="menu-form-ja" class="list-group-item list-group-item-action" name="trans" action="{% url 'set_language' %}" method="post">
                         {% csrf_token %}
                         {% for field in form %}{{ field.as_hidden }}{% endfor %}
                         <input type="hidden" name="language" value="ja">
-                        <a href="#" onclick="document.getElementById('menu-form-ja').submit()" class="list-group-item-action"><span class="menu-span">{% trans '日本語' %}</span><img class="menu-img" src="{% static 'img/japanflag.png' %}"></a>
+                        <a href="#" onclick="document.getElementById('menu-form-ja').submit()" class="list-group-item-action"><span class="menu-span">ภาษาญี่ปุ่น / 日本語</span><img class="menu-img" src="{% static 'img/japanflag.png' %}"></a>
                     </form>
                 </ul>
 

@@ -5,22 +5,26 @@
     <div>{{ object.hiragana }}</div>
     <div>{{ object.roman }}</div>
     <div>
-        {% if LANGUAGE_CODE == "ja" %}
-            <div class="badge {{ object.wordclass_id.slug }}">{{ object.wordclass_id.japanese }}</div>
-        {% elif LANGUAGE_CODE == "th" %}
-            <div class="badge {{ object.wordclass_id.slug }}">{{ object.wordclass_id.thai }}</div>
-        {% else %}
-            <div class="badge {{ object.wordclass_id.slug }}">{{ object.wordclass_id.slug }}</div>
-        {% endif %}
-        {% for tag in object.tags.all %}
+        <div>
             {% if LANGUAGE_CODE == "ja" %}
-                <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.name }}</div>
+                <div class="badge {{ object.wordclass_id.slug }}">{{ object.wordclass_id.japanese }}</div>
             {% elif LANGUAGE_CODE == "th" %}
-                <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.thai }}</div>
+                <div class="badge {{ object.wordclass_id.slug }}">{{ object.wordclass_id.thai }}</div>
             {% else %}
-                <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.slug }}</div>
+                <div class="badge {{ object.wordclass_id.slug }}">{{ object.wordclass_id.slug }}</div>
             {% endif %}
-        {% endfor %}
+        </div>
+        <div>
+            {% for tag in object.tags.all %}
+                {% if LANGUAGE_CODE == "ja" %}
+                    <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.name }}</div>
+                {% elif LANGUAGE_CODE == "th" %}
+                    <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.thai }}</div>
+                {% else %}
+                    <div class="tag-badge badge badge-primary" value="{{ tag.id }}">{{ tag.slug }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
     <hr>
     <div><h5>{% trans '定義' %}</h5></div>
