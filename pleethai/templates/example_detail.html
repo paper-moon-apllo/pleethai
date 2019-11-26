@@ -26,7 +26,7 @@
             <div><h5>{% trans '構成語' %}</h5></div>
             {% for const in const_list %}
                 {% with const.word_id.japanese_id.id|get_japanese as jp_obj %}
-                    <div class="card mb-2 modallink" href="/word/{{ jp_obj.id }}/">
+                    <div class="card mb-2 modallink-word" href="/word/{{ jp_obj.id }}/">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6"><h6>{{ forloop.counter }}. {{ jp_obj.japanese }} {{ jp_obj.roman }}</h6></div>

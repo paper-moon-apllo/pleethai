@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-09 14:05+0700\n"
+"POT-Creation-Date: 2019-11-13 12:23+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,21 +56,29 @@ msgstr "ex)'พรุ่งนี้' ไม่ได้ลงทะเบีย
 msgid "メールアドレスが確認用と一致しません。"
 msgstr "ไม่ตรงกันอีเมลสำหรับการยืนยัน"
 
-#: .\pleethai\templates\base.html:22
+#: .\pleethai\templates\base.html:45 .\pleethai\templates\base.html:61
 msgid "単語・例文"
 msgstr "คำและประโยค"
 
-#: .\pleethai\templates\base.html:25 .\pleethai\templates\request.html:5
-#: .\pleethai\templates\request.html:11
+#: .\pleethai\templates\base.html:48 .\pleethai\templates\base.html:62
+#: .\pleethai\templates\request.html:5 .\pleethai\templates\request.html:11
 msgid "リクエスト"
 msgstr "ขอร้อง"
 
-#: .\pleethai\templates\example_detail.html:27
+#: .\pleethai\templates\base.html:67 .\pleethai\templates\search.html:45
+msgid "タイ語"
+msgstr "ภาษาไทย"
+
+#: .\pleethai\templates\base.html:73 .\pleethai\templates\search.html:39
+msgid "日本語"
+msgstr "ภาษาญี่ปุ่น"
+
+#: .\pleethai\templates\example_detail.html:26
 msgid "構成語"
 msgstr "คำศัพท์ประกอบ"
 
-#: .\pleethai\templates\example_detail.html:44
-#: .\pleethai\templates\tags.html:18 .\pleethai\templates\word_detail.html:55
+#: .\pleethai\templates\example_detail.html:43
+#: .\pleethai\templates\tags.html:18 .\pleethai\templates\word_detail.html:60
 msgid "閉じる"
 msgstr "ปิด"
 
@@ -104,26 +112,30 @@ msgstr "ส่ง"
 msgid "修正"
 msgstr "แก้ไข่"
 
-#: .\pleethai\templates\search.html:18
+#: .\pleethai\templates\search.html:19
 msgid "検索ワード"
 msgstr "คำหา"
 
-#: .\pleethai\templates\search.html:19
+#: .\pleethai\templates\search.html:21 .\pleethai\templates\search.html:42
 msgid "タグ"
 msgstr "แท็ก"
 
-#: .\pleethai\templates\search.html:25
-msgid "単語"
-msgstr "คำศัพท์"
-
-#: .\pleethai\templates\search.html:28 .\pleethai\templates\word_detail.html:41
-msgid "例文"
-msgstr "ตัวอย่างประโยค"
-
-#: .\pleethai\templates\tags.html:17
+#: .\pleethai\templates\search.html:22 .\pleethai\templates\tags.html:17
 msgid "クリア"
 msgstr "สะสาง"
 
-#: .\pleethai\templates\word_detail.html:26
+#: .\pleethai\templates\search.html:27
+msgid "単語"
+msgstr "คำศัพท์"
+
+#: .\pleethai\templates\search.html:30 .\pleethai\templates\word_detail.html:46
+msgid "例文"
+msgstr "ตัวอย่างประโยค"
+
+#: .\pleethai\templates\search.html:45
+msgid "英語"
+msgstr "ภาษาอังกฤษ"
+
+#: .\pleethai\templates\word_detail.html:30
 msgid "定義"
 msgstr "ความหมาย"

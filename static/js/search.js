@@ -20,12 +20,14 @@ $(document).ready(function(){
     $('#content').on('input', '#keyword', function(e) { 
         initTimer();
     })
-    .on('keyup', function(e) { 
+    .on('keydown', function(e) { 
         if (e.which == 13) {
             //if not pc, hide keyboard
             if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
                 $("#keyword").blur();
             }
+            //Cancel reloading
+            return false;
         }
     })
     // Show tags modal
@@ -39,20 +41,26 @@ $(document).ready(function(){
         search();
     })
     // Change backgroundcolor of selected item
-    .on('mouseenter', '.row-word, .row-example, .modallink', function() {
-        $(this).addClass('bg-light');
+    .on('mouseenter', '.row-word, .modallink-word', function() {
+        $(this).addClass('hover-word');
     })
-    .on('mouseleave', '.row-word, .row-example, .modallink', function() {
-        $(this).removeClass('bg-light');
+    .on('mouseenter', '.row-example, .modallink-example', function() {
+        $(this).addClass('hover-example');
+    })
+    .on('mouseleave', '.row-word, .modallink-word', function() {
+        $(this).removeClass('hover-word');
+    })
+    .on('mouseleave', '.row-example, .modallink-example', function() {
+        $(this).removeClass('hover-example');
     })
     // Show detail modal *dont show when hold
-    .on('mousedown', '.row-word, .row-example, .modallink', function() {
+    .on('mousedown', '.row-word, .row-example, .modallink-word, .modallink-example', function() {
         holdFlag = false;
         clickTimer =setTimeout(function(){
             holdFlag = true;
         }, 350);
     })
-    .on('mouseup', '.row-word, .row-example, .modallink', function(e) {
+    .on('mouseup', '.row-word, .row-example, .modallink-word, .modallink-example', function(e) {
         if (clickTimer) {
             clearTimeout(clickTimer);
         }
@@ -71,9 +79,13 @@ $(document).ready(function(){
                 $( "#detail-modal .modal-content" ).load($(this).attr("href"), function() {
                     $("#detail-modal").modal("show");
                 });
-            } else if($(this).is('.modallink')) {
+            } else if($(this).is('.modallink-word, .modallink-example')) {
                 $("#detail-modal .modal-content").load($(this).attr("href"));
             }
+            gtag('js', new Date());
+            gtag('config', 'UA-147976194-1', {
+                'page_path': $(this).attr("href")
+            });
         }
     })
     // Load items
@@ -120,6 +132,31 @@ $(document).ready(function(){
         badgeClickedFlag = false;
         searchedFlag = false;
     });
+
+    // Page top button
+    var appear = false;
+    var pagetop = $('#page_top');
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {  //100pxスクロールしたら
+        if (appear == false) {
+          appear = true;
+          pagetop.stop().animate({
+            'bottom': '20px' //下から20pxの位置に
+          }, 300); //0.3秒かけて現れる
+        }
+      } else {
+        if (appear) {
+          appear = false;
+          pagetop.stop().animate({
+            'bottom': '-50px' //下から-50pxの位置に
+          }, 300); //0.3秒かけて隠れる
+        }
+      }
+    });
+    pagetop.click(function () {
+      $('body, html').animate({ scrollTop: 0 }, 500); //0.5秒かけてトップへ戻る
+      return false;
+    });
 });
 
 function initTimer() {
@@ -141,14 +178,18 @@ function search() {
 
 function loadWordList() {
     $('#wordloading').show();
+    gtag('js', new Date());
+    gtag('config', 'UA-147976194-1', {
+        'page_path': '/wordsearch' + CreateQuery()
+    });
     wordPage++;
     $.ajax({
         'url': 'searchword',
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
-            'tags' : getTags(),
-            'page' : wordPage,
+            'tags': getTags(),
+            'page': wordPage,
         },
         'dataType': 'text'
     })
@@ -174,14 +215,18 @@ function loadWordList() {
 
 function loadExampleList() {
     $('#exampleloading').show();
+    gtag('js', new Date());
+    gtag('config', 'UA-147976194-1', {
+        'page_path': '/examplesearch' + CreateQuery()
+    });
     examplePage++;
     $.ajax({
         'url': 'searchexample',
         'type': 'GET',
         'data': {
             'keyword': $('#keyword').val(),
-            'tags' : getTags(),
-            'page' : examplePage,
+            'tags': getTags(),
+            'page': examplePage,
         },
         'dataType': 'text'
     })
@@ -240,5 +285,19 @@ function allToggleOff() {
 function getTags() {
     return $('.tag-toggle:checked').map(function(){
         return $(this).val();
-    }).get();
+    }).get().join('+');
+}
+
+// Creaete query for Google Analytics
+function CreateQuery() {
+    var query = "";
+    if ($('#keyword').val()) {
+        query = "?keyword=" + $('#keyword').val();
+        if (getTags()) {
+            query += "&tags=" + getTags();
+        }
+    } else if (getTags()) {
+        query += "?tags=" + getTags();
+    }
+    return query;
 }
