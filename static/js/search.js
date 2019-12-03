@@ -193,7 +193,7 @@ function loadWordList() {
         },
         'dataType': 'text'
     })
-    .done( response => {
+    .done(function(response) {
         if (!response && $('.row-word').length == 0) {
             $('#wordcontainer').append('<div class="alert alert-warning">'
             + NO_RESULT_MESSAGE + '</div>');
@@ -203,12 +203,12 @@ function loadWordList() {
         }
         
     })
-    .fail( () => {
+    .fail(function() {
         wordPage--;
         $('#wordcontainer').append('<div class="alert alert-danger">'
         + SERVER_ERROR_MESSAGE + '</div>');
     })
-    .always( () => {
+    .always(function() {
         $('#wordloading').hide();
     });
 }
@@ -230,7 +230,7 @@ function loadExampleList() {
         },
         'dataType': 'text'
     })
-    .done( response => {
+    .done(function(response) {
         if (!response && $('.row-example').length == 0) {
             $('#examplecontainer').append('<div class="alert alert-warning">'
             + NO_RESULT_MESSAGE + '</div>');
@@ -239,12 +239,12 @@ function loadExampleList() {
             $('#examplecontainer').append(response);
         }
     })
-    .fail( () => {
+    .fail(function() {
         examplePage--;
         $('#examplecontainer').append('<div class="alert alert-danger">'
         + SERVER_ERROR_MESSAGE + '</div>');
     })
-    .always( () => {
+    .always(function() {
         $('#exampleloading').hide();
     });
 }
@@ -256,7 +256,7 @@ function loadTagList() {
         'type': 'GET',
         'dataType': 'text'
     })
-    .done( response => {
+    .done(function(response) {
         if (!response) {
             $('#tag-modal-content').append('<div class="alert alert-warning">'
             + NO_RESULT_MESSAGE + '</div>');
@@ -265,11 +265,11 @@ function loadTagList() {
             $('#tag-modal-content').append(response);
         }
     })
-    .fail( () => {
+    .fail(function() {
         $('#tag-modal-content').append('<div class="alert alert-danger">'
         + SERVER_ERROR_MESSAGE + '</div>');
     })
-    .always( () => {
+    .always(function() {
         $('#tagloading').hide();
     });
 }
