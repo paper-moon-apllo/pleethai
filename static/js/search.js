@@ -170,8 +170,14 @@ function initTimer() {
 function search() {
     wordPage = 0;
     examplePage = 0;
+    var wordHeader = $('#wordheader');
+    var exampleHeader = $('#exampleheader');
     $('#wordcontainer').empty();
     $('#examplecontainer').empty();
+    $('#wordcontainer').append(wordHeader);
+    $('#examplecontainer').append(exampleHeader);
+    $('#wordcontainer').append('<hr class="header-row-word">');
+    $('#examplecontainer').append('<hr class="header-row-example">');
     loadWordList();
     loadExampleList();
 }
