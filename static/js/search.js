@@ -20,12 +20,14 @@ $(document).ready(function(){
     $('#content').on('input', '#keyword', function(e) { 
         initTimer();
     })
-    .on('keyup', function(e) { 
+    .on('keydown', function(e) { 
         if (e.which == 13) {
             //if not pc, hide keyboard
             if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
                 $("#keyword").blur();
             }
+            //Cancel reloading
+            return false;
         }
     })
     // Show tags modal

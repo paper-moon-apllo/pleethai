@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sass_processor',
     'import_export',
     'crispy_forms',
     'pleethai',
@@ -147,14 +146,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-# Sass/SCSS
-SASS_PROCESSOR_AUTO_INCLUDE = False
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
-SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
-SASS_PRECISION = 8
-SASS_OUTPUT_STYLE = 'compact'
-SASS_TEMPLATE_EXTS = ['.html', '.haml']
 
 # Mail send
 # FOR DEBUG

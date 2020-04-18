@@ -18,26 +18,31 @@ a.title {
 #nav-items {
     margin-bottom: 10px;
 }
+li.nav-item-base {
+    text-align: center;
+}
 div.btn-group {
     align-self: flex-end;
 }
-a.btn-dic {
+div.btn-dic {
     width: 114px;
+    height: 57px;
     background-image: url("../img/btn-dic.png");
     background-repeat: no-repeat;
     background-position: center bottom;
     flex-shrink: 0;
 }
-a.btn-req {
+div.btn-req {
     width: 97px;
+    height: 57px;
     background-image: url("../img/btn-req.png");
     background-repeat: no-repeat;
     background-position: center bottom;
     margin-left: 10px;
     flex-shrink: 0;
 }
-li.nav-item {
-    text-align: center;
+a.btn-link {
+    padding-top: 1.2rem;
 }
 form.lang-flag {
     max-width: 68px;
