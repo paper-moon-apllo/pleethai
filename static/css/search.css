@@ -21,7 +21,9 @@ button.nav-btn {
     background-position: center center;
     background-size: cover;
     margin-left: 10px;
+    padding: 0;
     color: white;
+    white-space: nowrap;
 }
 li.nav-item-search {
     width: 50%;
@@ -34,6 +36,7 @@ li.nav-item-search {
     background-position: center bottom;
     background-size: 100% auto;
     padding: 3% 0 3% 0;
+    white-space: nowrap;
 }
 #nav1.active {
     background-image: url("../img/word-select.png");
@@ -49,6 +52,7 @@ li.nav-item-search {
     background-position: center bottom;
     background-size: 100% auto;
     padding: 3% 0 3% 0;
+    white-space: nowrap;
 }
 #nav2.active {
     background-image: url("../img/example-select.png");
@@ -172,6 +176,7 @@ td.eng {
 }
 .verticalLine-example {
     border-left: none;
+    margin-top: 5px;
 }
 .header-row-word {
     display: none;
@@ -190,6 +195,7 @@ td.eng {
 @media only screen and (min-width : 992px) {
     .verticalLine-example {
         border-left: 1px solid #dee2e6;
+        margin-top: 0;
     }
     .header-row-example {
         display: flex;
