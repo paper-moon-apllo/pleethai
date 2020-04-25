@@ -6,10 +6,10 @@
 - 例）検索ワード「法」 -> 検索結果「方法」、「法律」、「フレミングの法則」、…など
 
 ### 単語検索画面
-<img src ="https://docs.google.com/drawings/d/e/2PACX-1vQydF_MCgQ78htf5T37wAEiFy2SbCFMUPhOO8MVbGP6KT5wKIszzVkKa1ZHBmTs2BzQsQO2WrbxJBhw/pub?w=791&h=345" alt="単語検索画面" width="518">
+![単語検索画面](https://docs.google.com/drawings/d/e/2PACX-1vQydF_MCgQ78htf5T37wAEiFy2SbCFMUPhOO8MVbGP6KT5wKIszzVkKa1ZHBmTs2BzQsQO2WrbxJBhw/pub?w=791&h=345)
 
 ### 例文検索画面
-<img src ="https://docs.google.com/drawings/d/e/2PACX-1vRj6dX48JBRD-FbXnAst7gewJs2pIYVfDq5A44L6J3tShoKFI4wIPaUgSKgbpoxunPD7LJaHsi9r0qU/pub?w=791&h=345" alt="例文検索画面" width="518">
+![例文検索画面](https://docs.google.com/drawings/d/e/2PACX-1vRj6dX48JBRD-FbXnAst7gewJs2pIYVfDq5A44L6J3tShoKFI4wIPaUgSKgbpoxunPD7LJaHsi9r0qU/pub?w=791&h=345)
 
 
 1. 単語・例文検索画面 / リクエスト画面切り替え
@@ -23,12 +23,12 @@
    - 文字入力中に、リアルタイムで検索が行われる。
 4. タグ選択画面表示ボタン / クリアボタン
    - タグ選択画面表示ボタン
-     - 表示される単語・例文を、タグによって絞り込む。
+     - タグ選択画面でタグを選択することによって、表示される単語・例文を絞り込むことが出来る。
        
        例）タグ「時間」を選択すると、「日」、「年」、「今」など、時間に関連する単語・例文のみが表示される。
 
    - クリアボタン
-     - 検索ワード、選択されているタグをクリアする。
+     - 検索ワード、および選択中のタグをクリアする。
 5. 単語 / 例文検索画面切り替えタブ
    - デフォルトの検索対象は単語検索画面。
    - 「例文」をクリックした場合、例文検索画面を表示する。
@@ -38,12 +38,14 @@
    - 検索結果の単語の日本語、タイ語、英語表記、品詞(名詞、動詞など)、対応するタグを表示する。
    - タグをクリックした場合、クリックしたタグに対応する単語を検索する。
    - タグ以外の箇所をクリックした場合、クリックした行の単語詳細画面を表示する。
+
 9. 例文 日本語表記
 10. 例文 対応タグ
 11. 例文 タイ語表記
-   - 検索結果の例文の日本語、タイ語表記、対応するタグを表示する。
-   - タグをクリックした場合、クリックしたタグに対応する例文を検索する。
-   - タグ以外の箇所をクリックした場合、クリックした行の例文詳細画面を表示する。
+    - 検索結果の例文の日本語、タイ語表記、対応するタグを表示する。
+    - タグをクリックした場合、クリックしたタグに対応する例文を検索する。
+    - タグ以外の箇所をクリックした場合、クリックした行の例文詳細画面を表示する。
+
 
 
 * スマートフォンなどの画面サイズが小さい端末の場合は、
@@ -54,9 +56,10 @@
 
   ![例文検索画面モバイル](https://docs.google.com/drawings/d/e/2PACX-1vTLIQYxWN24bdBahvhQ16ZkPupmZCkAsugwV2A5apFN8-fpGgi4j2-UYhOQO4-N-pm-bDN3LWxfpHJr/pub?w=820&h=368)
 
+---
 
 ### 単語詳細画面
-<img src ="https://docs.google.com/drawings/d/e/2PACX-1vQxK-b3n0Gbdo5e7uIXLGmCN3dkuD_80JCxCL0JuZUrPl0M0ciZ37YHmgWMyz0mDaM-g3g96VG_ZFTX/pub?w=791&h=345" alt="単語詳細画面" width="518">
+![単語詳細画面](https://docs.google.com/drawings/d/e/2PACX-1vQxK-b3n0Gbdo5e7uIXLGmCN3dkuD_80JCxCL0JuZUrPl0M0ciZ37YHmgWMyz0mDaM-g3g96VG_ZFTX/pub?w=791&h=345)
 
 1. 対応タグ
    - タグをクリックした場合、クリックしたタグに対応する単語を検索する。
@@ -65,7 +68,7 @@
 
 
 ### 例文詳細画面
-<img src ="https://docs.google.com/drawings/d/e/2PACX-1vTA7CrzOykfQzC9DvwLDZDPGp2U_HLB0hvGOxKxNZB-E6FLkO_G4tA1Jem0E9mL4KasamtWB0b88r8_/pub?w=791&h=345" alt="例文検索画面" width="518">
+![例文検索画面](https://docs.google.com/drawings/d/e/2PACX-1vTA7CrzOykfQzC9DvwLDZDPGp2U_HLB0hvGOxKxNZB-E6FLkO_G4tA1Jem0E9mL4KasamtWB0b88r8_/pub?w=791&h=345)
 
 1. 対応タグ
    - タグをクリックした場合、クリックしたタグに対応する例文を検索する。

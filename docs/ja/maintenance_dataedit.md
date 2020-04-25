@@ -12,21 +12,17 @@ http://127.0.0.1:8000/admin/
 システム構築時に決定した管理ユーザ名、パスワードを入力してログインする。
 
 
-### 2. データの追加、変更
-この手順では、現在システムに登録されているデータを取得(エクスポート)し、内容を追加変更する。
+### 2. データの取得　＆　追加、変更
+現在システムに登録されているデータを取得(テーブルエクスポート)し、内容を追加、変更する。
 既に登録用のデータが存在している場合（サンプルデータなど）は、次の手順に進む。
 
-1. 変更が必要なデータについて、管理ページで以下のように操作して、データをエクスポートする。
+1. 変更が必要なDBテーブルについて、管理ページで以下のように操作して、対象データをエクスポートする。
 
-<img src ="https://user-images.githubusercontent.com/42882840/80270765-ed9fbe00-86f5-11ea-9b75-14d4c7edd064.png" alt="export 01" width="250">
- → 
-<img src ="https://user-images.githubusercontent.com/42882840/80270767-ee385480-86f5-11ea-92fb-ca19a18f074b.png" alt="export 02" width="250">
- → 
-<img src ="https://user-images.githubusercontent.com/42882840/80270768-eed0eb00-86f5-11ea-8ac0-a9a67df2058a.png" alt="export 03" width="250">
+<img src ="https://user-images.githubusercontent.com/42882840/80270765-ed9fbe00-86f5-11ea-9b75-14d4c7edd064.png" alt="export 01" width="250"> → <img src ="https://user-images.githubusercontent.com/42882840/80270767-ee385480-86f5-11ea-92fb-ca19a18f074b.png" alt="export 02" width="250"> → <img src ="https://user-images.githubusercontent.com/42882840/80270768-eed0eb00-86f5-11ea-8ac0-a9a67df2058a.png" alt="export 03" width="250">
 
 
-2. エクスポートしたファイルを編集する。
-データの各項目については、[Database](./database.md)を参照。
+2. エクスポートしたファイルを編集(行追加、変更)する。
+- データの各項目については、[Database](./database.md)を参照。
 
 
 ### 3. データの登録
@@ -35,14 +31,7 @@ http://127.0.0.1:8000/admin/
 
 1. WordClassテーブル登録
 
-<img src ="https://user-images.githubusercontent.com/42882840/80270793-0e681380-86f6-11ea-8804-5045e35f0fd3.png" alt="import 01" width="250">
- → 
-<img src ="https://user-images.githubusercontent.com/42882840/80270795-0f00aa00-86f6-11ea-8e47-b45a8a7bfc63.png" alt="import 02" width="250">
- → 
-<img src ="https://user-images.githubusercontent.com/42882840/80270796-0f994080-86f6-11ea-8e60-13772c2a17f1.png" alt="import 03" width="250">
- → 
-<img src ="https://user-images.githubusercontent.com/42882840/80270797-0f994080-86f6-11ea-9669-30d2d01bcceb.png" alt="import 04" width="250">
-
+<img src ="https://user-images.githubusercontent.com/42882840/80270793-0e681380-86f6-11ea-8804-5045e35f0fd3.png" alt="import 01" width="250"> → <img src ="https://user-images.githubusercontent.com/42882840/80270795-0f00aa00-86f6-11ea-8e47-b45a8a7bfc63.png" alt="import 02" width="250"> → <img src ="https://user-images.githubusercontent.com/42882840/80270796-0f994080-86f6-11ea-8e60-13772c2a17f1.png" alt="import 03" width="250"> → <img src ="https://user-images.githubusercontent.com/42882840/80270797-0f994080-86f6-11ea-9669-30d2d01bcceb.png" alt="import 04" width="250">
 
 2. Tagテーブル登録
     * 上記と同じようにデータを登録する。

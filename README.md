@@ -1,5 +1,4 @@
 ![GaifaaYeepun](https://user-images.githubusercontent.com/42882840/80269234-b4ad1c80-86e8-11ea-8a02-567b854170d5.png)
-====
 
 ## Overview
 Djangoによる、日本語、タイ語、英語の単語、例文翻訳サイトプロジェクトです。
@@ -19,7 +18,7 @@ Djangoによる、日本語、タイ語、英語の単語、例文翻訳サイ�
 
 ## Install
 - 本番環境用 (**To Be Determined**)
-- [開発環境用](./docs/ja/install/develop.md)
+- [開発環境用](./docs/ja/install_develop.md)
 
 
 ## How to use
@@ -35,8 +34,8 @@ Djangoによる、日本語、タイ語、英語の単語、例文翻訳サイ�
 
 
 ## Maintenance
-- [単語・例文追加、変更](./docs/ja/maintenance_reqrecieved.md)
-- [単語・例文リクエスト受領時の対応](./docs/ja/maintenance_dataedit.md)
+- [単語・例文追加、変更](./docs/ja/maintenance_dataedit.md)
+- [単語・例文リクエスト受領時の対応](./docs/ja/maintenance_reqrecieved.md)
 
 
 ## Structure
