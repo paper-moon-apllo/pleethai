@@ -3,7 +3,7 @@
 日本語、タイ語、英語のいずれかを入力することで、単語あるいは例文を検索出来る。
 検索は部分一致で行われるため、検索ワードの一部を入力すると、該当する全ての単語・例文が表示される。
 
-- 例）検索ワード「法」 -> 検索結果「方法」、「法律」、「フレミングの法則」、…など
+- 例) 検索ワード「法」 -> 検索結果「方法」、「法律」、「フレミングの法則」、…など
 
 ### 単語検索画面
 ![単語検索画面](https://docs.google.com/drawings/d/e/2PACX-1vQydF_MCgQ78htf5T37wAEiFy2SbCFMUPhOO8MVbGP6KT5wKIszzVkKa1ZHBmTs2BzQsQO2WrbxJBhw/pub?w=791&h=345)
@@ -25,7 +25,7 @@
    - タグ選択画面表示ボタン
      - タグ選択画面でタグを選択することによって、表示される単語・例文を絞り込むことが出来る。
        
-       例）タグ「時間」を選択すると、「日」、「年」、「今」など、時間に関連する単語・例文のみが表示される。
+       例) タグ「時間」を選択すると、「日」、「年」、「今」など、時間に関連する単語・例文のみが表示される。
 
    - クリアボタン
      - 検索ワード、および選択中のタグをクリアする。
@@ -54,7 +54,7 @@
 
   は表示されない。画面右上のボタンを押下し、表示されるメニュー内のリンクを使用する。
 
-  ![例文検索画面モバイル](https://docs.google.com/drawings/d/e/2PACX-1vTLIQYxWN24bdBahvhQ16ZkPupmZCkAsugwV2A5apFN8-fpGgi4j2-UYhOQO4-N-pm-bDN3LWxfpHJr/pub?w=820&h=368)
+  ![画面サイズが小さい端末の場合](https://docs.google.com/drawings/d/e/2PACX-1vTLIQYxWN24bdBahvhQ16ZkPupmZCkAsugwV2A5apFN8-fpGgi4j2-UYhOQO4-N-pm-bDN3LWxfpHJr/pub?w=820&h=368)
 
 ---
 
@@ -68,7 +68,7 @@
 
 
 ### 例文詳細画面
-![例文検索画面](https://docs.google.com/drawings/d/e/2PACX-1vTA7CrzOykfQzC9DvwLDZDPGp2U_HLB0hvGOxKxNZB-E6FLkO_G4tA1Jem0E9mL4KasamtWB0b88r8_/pub?w=791&h=345)
+![例文詳細画面](https://docs.google.com/drawings/d/e/2PACX-1vTA7CrzOykfQzC9DvwLDZDPGp2U_HLB0hvGOxKxNZB-E6FLkO_G4tA1Jem0E9mL4KasamtWB0b88r8_/pub?w=791&h=345)
 
 1. 対応タグ
    - タグをクリックした場合、クリックしたタグに対応する例文を検索する。
