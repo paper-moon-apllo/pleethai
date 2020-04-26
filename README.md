@@ -21,7 +21,7 @@ Djangoによる、日本語、タイ語、英語の単語、例文翻訳サイ�
 - [開発環境用](./docs/ja/install_develop.md)
 
 
-## 使い方
+## 基本的な使い方
 メインページの単語・例文検索画面から、調べたい単語(または例文)を入力して検索する。
 また、知りたい単語(または例文)がシステムに登録されていない場合は、リクエスト画面からシステム管理者に通知を送ることが出来る。
 
@@ -41,6 +41,7 @@ Djangoによる、日本語、タイ語、英語の単語、例文翻訳サイ�
 
 ## システム構成
 - システム構成図
+
 ![システム構成図](https://docs.google.com/drawings/d/e/2PACX-1vSLFh_yZhKKi0L7hnfksXXx2Rjc6bimx0RjocQRpwrI5KxMZSzmARUx9lNiZXjq-8R6oSboAkMqkxgV/pub?w=646&h=480)
 
 - [DB構成](./docs/ja/database.md)
