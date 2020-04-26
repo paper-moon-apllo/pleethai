@@ -2,21 +2,21 @@
 新たに単語・例文を追加 or 既存の単語・例文を変更などする場合は、以下の手順で行う。
 
 ### 1. 管理ページにログイン
-ブラウザから、`システムURL + /admin/`を表示する。
+ブラウザで、`システムURL + /admin/`にアクセスする。
 
-※システムURLがhttp://127.0.0.1:8000/ （＝開発環境）の場合、以下のURLを表示。
+- システムURLがhttp://127.0.0.1:8000/ (＝開発環境)の場合、以下のURLにアクセスする。
 ```
 http://127.0.0.1:8000/admin/
 ```
 
-システム構築時に決定した管理ユーザ名、パスワードを入力してログインする。
+- システムインストール時に決定した管理ユーザ名、パスワードを入力してログインする。
 
 
 ### 2. データの取得　＆　追加、変更
 現在システムに登録されているデータを取得(テーブルエクスポート)し、内容を追加、変更する。
-既に登録用のデータが存在している場合（サンプルデータなど）は、次の手順に進む。
+既に登録用のデータが存在している場合(サンプルデータなど)は、次の手順に進む。
 
-1. 変更が必要なDBテーブルについて、管理ページで以下のように操作して、対象データをエクスポートする。
+1. 管理ページで以下のように操作して、変更が必要なデータをエクスポートする。
 
 <img src ="https://user-images.githubusercontent.com/42882840/80270765-ed9fbe00-86f5-11ea-9b75-14d4c7edd064.png" alt="export 01" width="250"> → <img src ="https://user-images.githubusercontent.com/42882840/80270767-ee385480-86f5-11ea-92fb-ca19a18f074b.png" alt="export 02" width="250"> → <img src ="https://user-images.githubusercontent.com/42882840/80270768-eed0eb00-86f5-11ea-8ac0-a9a67df2058a.png" alt="export 03" width="250">
 
@@ -39,7 +39,7 @@ http://127.0.0.1:8000/admin/
 3. Wordテーブル登録
     * 上記と同じようにデータを登録する。
 
-4. Wordテーブルの「変更」を選択して、内部データを更新 (Update_Sys_Word_Tablesを実行)する。
+4. Wordテーブルの「変更」を選択し、「UPDATE_SYS_WORD_TABLES」をクリックする (内部データが更新される)。
 
 <img src ="https://user-images.githubusercontent.com/42882840/80270814-39eafe00-86f6-11ea-9a9a-c37c644de894.png" alt="Update_Sys_Word_Tables 01" width="300">
 

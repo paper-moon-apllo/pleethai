@@ -1,6 +1,6 @@
-## DBテーブル（詳細）
+## DBテーブル (詳細)
 ### Word (単語)テーブル
-| カラム名      | type          | 制約          |内容
+| カラム名      | Type          | 制約          |内容
 | ------------ | ------------- | ------------- | ------------- |
 |id            | INT(10)       | primary key<br>not null | 単語ID | 
 |japanese      | VARCHAR(127)  | not null      | 日本語 | 
@@ -16,7 +16,7 @@
 |tags          | VARCHAR(511)  |               | タグの日本語名をカンマ(,)区切りで記述する | 
 
 ### WordClass (品詞)テーブル
-| カラム名      | type          | 制約          |内容
+| カラム名      | Type          | 制約          |内容
 | ------------ | ------------- | ------------- | ------------- |
 |id            | INT(2)        | primary key<br>not null    | 品詞ID | 
 |thai          | VERCHAR(31)   |                | タイ語 | 
@@ -25,7 +25,7 @@
 
 
 ### Example (例文)テーブル
-| カラム名      | type          | 制約          |内容
+| カラム名      | Type          | 制約          |内容
 | ------------ | ------------- | ------------- | ------------- |
 |id            | INT(10)       | primary key<br>not null    | 例文ID | 
 |japanese      | VARCHAR(511)  | not null      | 日本語 | 
@@ -37,18 +37,18 @@
 |english       | VARCHAR(511)  |               | 英語 | 
 
 ### Constituent (例文構成)テーブル
-| カラム名      | type          | 制約          |内容
+| カラム名      | Type          | 制約          |内容
 | ------------ | ------------- | ------------- | ------------- |
 |id            | INT(10)       | primary key<br>not null              | 例文構成ID | 
-|example_id    | INT(10)       | not null<br>foregin keyJ(Example)    | 例文ID | 
+|example_id    | INT(10)       | not null<br>foregin key(Example)    | 例文ID | 
 |word_id       | INT(10)       | not null<br>foregin key(SysWordThai) | 例文を構成している単語ID |
 |order         | INT(2)        | not null    | 例文を構成している単語の表示順 | 
 
 
 ### Tag (タグ)テーブル
-| カラム名      | type          | 制約          |内容
+| カラム名      | Type          | 制約          |内容
 | ------------ | ------------- | ------------- | ------------- |
 |id            | INT           | primary key<br>not null  | タグID | 
-|name          | VARCHAR(100)  |               | タグ名（日本語） | 
-|slug          | VARCHAR(100)  |               | タグ名（英語） | 
-|thai          | VARCHAR(100)  |               | タグ名（タイ語） | 
+|name          | VARCHAR(100)  |               | タグ名 (日本語) | 
+|slug          | VARCHAR(100)  |               | タグ名 (英語) | 
+|thai          | VARCHAR(100)  |               | タグ名 (タイ語) | 

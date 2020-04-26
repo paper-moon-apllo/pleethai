@@ -1,22 +1,20 @@
 # 開発環境インストール
 ## 1. 必須ソフトウェアのインストール
-以下をインストール(詳細は省略)
+以下をインストール (詳細は各ソフトウェアのホームページを参照)
 * Python
     * 推奨バージョン3.6.7
     * 仮想環境を作成することを推奨
     * 以降、実行ファイルにパスが通っているもの(pythonコマンドで実行可能)とする
 * Git
 
-## 2. プロジェクトファイルのClone
+## 2. プロジェクトのClone
 
-このgithubプロジェクトをcloneする。
 ```
 git clone https://github.com/jocv-thai/pleethai.git
 ````
 
-## 3. 依存パッケージのインストール
+## 3. 依存Pythonパッケージのインストール
 
-プロジェクトが使用するPython依存パッケージをインストール。
 ```
 cd pleethai
 pip install -r requirements.txt
@@ -37,7 +35,7 @@ python manage.py createsuperuser
 ````
 python manage.py runserver
 ````
-* ブラウザで`http://127.0.0.1:8000/`にアクセスすることで、画面表示できる。
+* ブラウザで`http://127.0.0.1:8000/`にアクセスすると、検索画面が表示される。
 
 
 ## 7. DBデータの登録
