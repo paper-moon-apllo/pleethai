@@ -1,7 +1,7 @@
 # The Details of Page
 ## Search Page
-You can search for words/sentences in Japanse or Thai or English.
-The search is a partial match, so if you enter part of a search word, all corresponding words are displayed.
+You can search for Japanse, Thai, and English words/sentences.
+The search uses a partial match. All corresponding words will show up while entering a part of the search word and sentence.
 
 - For example, when the search word is "law", the results will be "lawyer", "lawn", "Flemming's law", etc.
 
@@ -22,14 +22,14 @@ The search is a partial match, so if you enter part of a search word, all corres
 3. Search word box
    - A search is performed each time you enter a character
 
-4. Tag Select Page Button / Clear Button
-   - Tag Select Page Button
-     - You can filter the words/sentences by selecting tags on "Tag Choose Page"
+4. Tag Choose Page Button / Clear Button
+   - Tag Choose Page Button
+     - You can filter the words/sentences by chosen tags on "Tag Choose Page"
       
-       For example, when you select tag "時間" or "เวลา" (meaning "time"), the search results will be the words related to time, such as "day", "year", "now", etc.
+       For example, when you choose tag "時間" or "เวลา" (meaning "time"), the search results will be the words related to time, such as "day", "year", "now", etc.
 
    - Clear Button
-     - Clear the search word and selected tags
+     - Clear the search word and chosen tags
 
 5. Switch "Word Search Page" / "Sentence Search Page" Tab
    - The default is "Word Search Page"
@@ -39,23 +39,22 @@ The search is a partial match, so if you enter part of a search word, all corres
 7. Word tag
 8. Word in Thai, English
    - Information of the word (Japanese, Thai, English, Word class, tags)
-   - When you click on one of tags, a search will be performed with the clicked tag 
-   - When you click on the area other than tags, the "Word Detail Page" of the clicked word will be shown
+   - Choose one of displayed tags to search with the tag
+   - Choose non-tag area to show "Word Detail Page" of the selected word
 
 9. Sentence in Japanese
 10. Sentence tag
 11. Sentence in Thai
     - Information of the sentence (Japanese, Thai, tags)
-    - When you click on one of tags, a search will be performed with the clicked tag
-    - When you click on the area other than tags, the "Sentence Detail Page" of the clicked sentence will be shown
+    - Choose one of displayed tags to search with the tag
+    - Choose non-tag area to show "Sentence Detail Page" of the selected sentence
 
 
 
-* In the case of small display such as smartphone,
+* In the case of small display such as smartphone, following options will not be shown by default
   1. Switch "Search Page" / "Request Page"
   2. Switch display language Thai / Japanese
 
-  will not be shown. 
   Click on the button at the top right to open the menu.
 
   ![In the case of small display](https://docs.google.com/drawings/d/e/2PACX-1vTLIQYxWN24bdBahvhQ16ZkPupmZCkAsugwV2A5apFN8-fpGgi4j2-UYhOQO4-N-pm-bDN3LWxfpHJr/pub?w=820&h=368)
@@ -66,15 +65,15 @@ The search is a partial match, so if you enter part of a search word, all corres
 ![Word Detail Page](https://docs.google.com/drawings/d/e/2PACX-1vQxK-b3n0Gbdo5e7uIXLGmCN3dkuD_80JCxCL0JuZUrPl0M0ciZ37YHmgWMyz0mDaM-g3g96VG_ZFTX/pub?w=791&h=345)
 
 1. Tag
-   - When you click on one of tags, a search will be performed with the clicked tag 
+   - Choose one of displayed tags to search with the tag 
 2. The sentences using this word
-    - When you click on one of sentences, the "Sentence Detail Page" of the clicked sentence will be shown
+   - Choose one of displayed sentences to show the "Sentence Detail Page"
 
 
 ### Sentence Detail Page
 ![Sentence Detail Page](https://docs.google.com/drawings/d/e/2PACX-1vTA7CrzOykfQzC9DvwLDZDPGp2U_HLB0hvGOxKxNZB-E6FLkO_G4tA1Jem0E9mL4KasamtWB0b88r8_/pub?w=791&h=345)
 
 1. Tag
-    - When you click on one of tags, a search will be performed with the clicked tag
+   - Choose one of displayed tags to search with the tag
 2. The words contained in this sentence
-   - When you click on one of words, the "Word Detail Page" of the clicked word will be shown
+   - Choose one of displayed words to show the "Word Detail Page"

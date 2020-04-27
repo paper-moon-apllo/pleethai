@@ -1,8 +1,8 @@
-## Add or edit words/sentences
+## How to add or edit words/sentences
 To add the new words/sentences or edit the registered words/sentences, follow the steps below.
 
 ### 1. Login to admin page
-Access to `"System URL" + /admin/` with browser.
+Access `"System URL" + /admin/` from a browser.
 
 - If the "System URL" is "http://127.0.0.1:8000/" (Development Environment), access to the URL below.
 ```
@@ -26,7 +26,7 @@ If you already have the data to register (such as sample data), you can go to th
 
 ### 3. Register data
 Import the data in the following order.
-You can skip the unchanged data.
+You may skip the registration step if the data is unchanged.
 
 1. Register "WordClass" table
 

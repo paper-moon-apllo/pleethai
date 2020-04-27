@@ -1,4 +1,4 @@
-## When receive a request mail from user
+## What to do when you receive a user’s request
 
 ### 1. Create the contents to register
 From the request mail, the system manager creates the following contents to register
@@ -15,7 +15,7 @@ From the request mail, the system manager creates the following contents to regi
     * Thai, English
 
 ### 2. Add or edit words/sentences
-According to the steps in [Add or edit words/sentences](./maintenance_dataedit.md), register the created data.
+According to the steps in [How to add or edit words/sentences](./maintenance_dataedit.md), register the created data.
 
 ### 3. Reply to the user
 If there is a user's mail address in the request mail, the system manager reply to the user.

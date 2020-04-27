@@ -4,7 +4,7 @@
 
 ## Overview
 GaifaaYeepun is a dictionary website project for Japanese, Thai, and English words/sentences, powered by Django.
-This project is designed for Thai people who are learning Japanese, and also Japanese people who are learning Thai.
+This project is designed for Thai people who are learning Japanese, and also Japanese people who are learning Thai language.
 
 ## Prerequisites
 ### Server
@@ -25,7 +25,9 @@ This project is designed for Thai people who are learning Japanese, and also Jap
 
 ## Usage (for system users)
 On the "Search Page", you can search for words/sentences.
-On the "Request Page", you can send a request for the new words/sentences to the system manager .
+
+In case a word/sentence you looked up was not registered, you can send a request for the new
+words/sentences to the system manager from the "Request Page".
 
 The details of each page are as follows.
 - [Search Page](./howtouse_search.md)
@@ -35,11 +37,11 @@ The details of each page are as follows.
 - [Request Page](./howtouse_request.md)
 
 
-## Maintenance
-- Update system
+## System Maintenance Procedure
+- How to update system
   - Get the newest files from this repository, and restart the web server.
-- [Add or edit words/sentences](./maintenance_dataedit.md)
-- [When receive a request mail from user](./maintenance_reqreceived.md)
+- [How to add or edit words/sentences](./maintenance_dataedit.md)
+- [What to do when you receive a user’s request](./maintenance_reqreceived.md)
 
 
 ## System Configuration
