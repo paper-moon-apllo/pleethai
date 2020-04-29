@@ -1,5 +1,7 @@
 ![GaifaaYeepun](https://user-images.githubusercontent.com/42882840/80269234-b4ad1c80-86e8-11ea-8a02-567b854170d5.png)
 
+![deploy gaifaa](https://github.com/jocv-thai/pleethai/workflows/deploy%20gaifaa/badge.svg)
+
 ### 日本語 | [English](./docs/en/README.md)
 
 ## 概要
