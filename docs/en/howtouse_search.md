@@ -16,9 +16,9 @@ The search uses a partial match. All corresponding words will show up while ente
    - The default is "Search Page"
    - When you click on the "リクエスト" or "ขอร้อง" link, ["Request Page"](./howtouse_request.md) will be shown
 2. Switch display language Thai / Japanese
-   - Switches the language used for labels on each page. The default is Japanese
+   - Switches the language used for labels on each page. The default language is Thai
      (This only affects the label, not the page structure)
-   - When you click on the Thai flag, display language will change to Thai
+   - When you click on the Japanese flag, display language will change to Japanese
 
 3. Search word box
    - A search is performed each time you enter a character
