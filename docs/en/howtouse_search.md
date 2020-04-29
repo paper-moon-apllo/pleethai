@@ -36,23 +36,23 @@ The search uses a partial match. All corresponding words will show up while ente
    - The default is "Word Search Page"
    - When you click on the "例文" or "ตัวอย่างประโยค" link, "Sentence Search Page" will be shown
 
-6. Word in Japanese
-7. Word tag
-8. Word in Thai, English
+6. Word
+
+   (a) Japanese,  (b) tag,  (c) Thai, English
    - Information of the word (Japanese, Thai, English, Word class, tags)
    - Choose one of displayed tags to search with the tag
    - Choose non-tag area to show "Word Detail Page" of the selected word
 
-9. Sentence in Japanese
-10. Sentence tag
-11. Sentence in Thai
-    - Information of the sentence (Japanese, Thai, tags)
-    - Choose one of displayed tags to search with the tag
-    - Choose non-tag area to show "Sentence Detail Page" of the selected sentence
+7. Sentence
+
+   (a) Japanese,  (b) tag,  (c) Thai
+   - Information of the sentence (Japanese, Thai, tags)
+   - Choose one of displayed tags to search with the tag
+   - Choose non-tag area to show "Sentence Detail Page" of the selected sentence
 
 
 
-* In the case of small display such as smartphone, following options will not be shown by default
+* In the case of small display such as smartphone (width 767px or less), following options will not be shown by default
   1. Switch "Search Page" / "Request Page"
   2. Switch display language Thai / Japanese
 

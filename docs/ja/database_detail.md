@@ -11,8 +11,8 @@
 |pronunciation_kana   | VARCHAR(127) |         | タイ語カタカナ | 
 |order         | INT(2)        |               | タイ語訳表示順 | 
 |english       | VARCHAR(127)  |               | 英語 | 
-|seachs        | BIGINT(15)    |               | 日本語名のGoogle検索件数 | 
-|wordclass_id  | INT(2)        | not null<br>foregin key(WordClass)    | 品詞ID | 
+|searchs       | BIGINT(15)    |               | 日本語名のGoogle検索件数 | 
+|wordclass_id  | INT(2)        | not null<br>foreign key(WordClass)    | 品詞ID | 
 |tags          | VARCHAR(511)  |               | タグの日本語名をカンマ(,)区切りで記述する | 
 
 ### WordClass (品詞)テーブル
@@ -40,8 +40,8 @@
 | カラム名      | Type          | 制約          |内容
 | ------------ | ------------- | ------------- | ------------- |
 |id            | INT(10)       | primary key<br>not null              | 例文構成ID | 
-|example_id    | INT(10)       | not null<br>foregin key(Example)    | 例文ID | 
-|word_id       | INT(10)       | not null<br>foregin key(SysWordThai) | 例文を構成している単語ID |
+|example_id    | INT(10)       | not null<br>foreign key(Example)    | 例文ID | 
+|word_id       | INT(10)       | not null<br>foreign key(SysWordThai) | 例文を構成している単語ID |
 |order         | INT(2)        | not null    | 例文を構成している単語の表示順 | 
 
 
