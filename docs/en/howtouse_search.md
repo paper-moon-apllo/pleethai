@@ -6,17 +6,18 @@ The search uses a partial match. All corresponding words will show up while ente
 - For example, when the search word is "law", the results will be "lawyer", "lawn", "Flemming's law", etc.
 
 ### Word Search Page
-![Word Search Page](https://docs.google.com/drawings/d/e/2PACX-1vQydF_MCgQ78htf5T37wAEiFy2SbCFMUPhOO8MVbGP6KT5wKIszzVkKa1ZHBmTs2BzQsQO2WrbxJBhw/pub?w=791&h=345)
+![Word Search Page](https://docs.google.com/drawings/d/e/2PACX-1vQydF_MCgQ78htf5T37wAEiFy2SbCFMUPhOO8MVbGP6KT5wKIszzVkKa1ZHBmTs2BzQsQO2WrbxJBhw/pub?w=1582&h=690)
 
 ### Sentence Search Page
-![Sentence Search Page](https://docs.google.com/drawings/d/e/2PACX-1vRj6dX48JBRD-FbXnAst7gewJs2pIYVfDq5A44L6J3tShoKFI4wIPaUgSKgbpoxunPD7LJaHsi9r0qU/pub?w=791&h=345)
+![Sentence Search Page](https://docs.google.com/drawings/d/e/2PACX-1vRj6dX48JBRD-FbXnAst7gewJs2pIYVfDq5A44L6J3tShoKFI4wIPaUgSKgbpoxunPD7LJaHsi9r0qU/pub?w=1582&h=690)
 
 
 1. Switch "Search Page" / "Request Page"
    - The default is "Search Page"
    - When you click on the "リクエスト" or "ขอร้อง" link, ["Request Page"](./howtouse_request.md) will be shown
 2. Switch display language Thai / Japanese
-   - The default is Japanese
+   - Switches the language used for labels on each page. The default is Japanese
+     (This only affects the label, not the page structure)
    - When you click on the Thai flag, display language will change to Thai
 
 3. Search word box
@@ -57,12 +58,12 @@ The search uses a partial match. All corresponding words will show up while ente
 
   Click on the button at the top right to open the menu.
 
-  ![In the case of small display](https://docs.google.com/drawings/d/e/2PACX-1vTLIQYxWN24bdBahvhQ16ZkPupmZCkAsugwV2A5apFN8-fpGgi4j2-UYhOQO4-N-pm-bDN3LWxfpHJr/pub?w=820&h=368)
+  ![In the case of small display](https://docs.google.com/drawings/d/e/2PACX-1vTLIQYxWN24bdBahvhQ16ZkPupmZCkAsugwV2A5apFN8-fpGgi4j2-UYhOQO4-N-pm-bDN3LWxfpHJr/pub?w=1640&h=736)
 
 ---
 
 ### Word Detail Page
-![Word Detail Page](https://docs.google.com/drawings/d/e/2PACX-1vQxK-b3n0Gbdo5e7uIXLGmCN3dkuD_80JCxCL0JuZUrPl0M0ciZ37YHmgWMyz0mDaM-g3g96VG_ZFTX/pub?w=791&h=345)
+![Word Detail Page](https://docs.google.com/drawings/d/e/2PACX-1vQxK-b3n0Gbdo5e7uIXLGmCN3dkuD_80JCxCL0JuZUrPl0M0ciZ37YHmgWMyz0mDaM-g3g96VG_ZFTX/pub?w=1582&h=690)
 
 1. Tag
    - Choose one of displayed tags to search with the tag 
@@ -71,7 +72,7 @@ The search uses a partial match. All corresponding words will show up while ente
 
 
 ### Sentence Detail Page
-![Sentence Detail Page](https://docs.google.com/drawings/d/e/2PACX-1vTA7CrzOykfQzC9DvwLDZDPGp2U_HLB0hvGOxKxNZB-E6FLkO_G4tA1Jem0E9mL4KasamtWB0b88r8_/pub?w=791&h=345)
+![Sentence Detail Page](https://docs.google.com/drawings/d/e/2PACX-1vTA7CrzOykfQzC9DvwLDZDPGp2U_HLB0hvGOxKxNZB-E6FLkO_G4tA1Jem0E9mL4KasamtWB0b88r8_/pub?w=1582&h=690)
 
 1. Tag
    - Choose one of displayed tags to search with the tag

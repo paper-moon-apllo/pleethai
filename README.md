@@ -45,6 +45,6 @@ Djangoによる、日本語、タイ語、英語の単語、例文辞書サイ�
 ## システム構成
 - システム構成図
 
-![システム構成図](https://docs.google.com/drawings/d/e/2PACX-1vSLFh_yZhKKi0L7hnfksXXx2Rjc6bimx0RjocQRpwrI5KxMZSzmARUx9lNiZXjq-8R6oSboAkMqkxgV/pub?w=646&h=480)
+![システム構成図](https://docs.google.com/drawings/d/e/2PACX-1vSLFh_yZhKKi0L7hnfksXXx2Rjc6bimx0RjocQRpwrI5KxMZSzmARUx9lNiZXjq-8R6oSboAkMqkxgV/pub?w=2024&h=996)
 
 - [DB構成](./docs/ja/database.md)

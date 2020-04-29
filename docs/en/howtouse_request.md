@@ -6,7 +6,7 @@ You can send the request message to the system manager, in the case of ...
 - etc.
 
 ### Request Input Page
-<img src ="https://docs.google.com/drawings/d/e/2PACX-1vTAxt-apr9CZhcl-JASt7QPQ5hSVFdIDNJL2FcVIyOnhquF8d4Rg5GI-kvsTs52SDCLtqve9LebnmR9/pub?w=770&h=346" alt="Request Input Page" width="518">
+![Request Input Page](https://docs.google.com/drawings/d/e/2PACX-1vTAxt-apr9CZhcl-JASt7QPQ5hSVFdIDNJL2FcVIyOnhquF8d4Rg5GI-kvsTs52SDCLtqve9LebnmR9/pub?w=1540&h=692)
 
 1. Switch "Search Page" / "Request Page"
 2. Switch display language Thai / Japanese
@@ -21,7 +21,7 @@ You can send the request message to the system manager, in the case of ...
 - Click the "確認" or "ยืนยัน" button, to go to "Request Confirm Page".
 
 ### Request Confirm Page
-<img src ="https://docs.google.com/drawings/d/e/2PACX-1vR3pEBioPS7nn2l5GwHP3UW1IzlIxOV87IwCLaIRkM-NJiMovYQMBgAP2ML05SKcjmEL7zY0bfwDVK9/pub?w=770&h=346" alt="Request Confirm Page" width="518">
+![Request Confirm Page](https://docs.google.com/drawings/d/e/2PACX-1vR3pEBioPS7nn2l5GwHP3UW1IzlIxOV87IwCLaIRkM-NJiMovYQMBgAP2ML05SKcjmEL7zY0bfwDVK9/pub?w=1540&h=692)
 
 - Click the "送信" or "ส่ง" button, to send the request to the system manager. If is is completed successfully, go to "Request Complete Page".
 - Click the "修正" or "แก้ไข่" button, to go back to "Request Input Page".
