@@ -158,7 +158,7 @@ EMAIL_HOST_PASSWORD = 'gaifaa2019'
 EMAIL_USE_TLS = True
 
 REQUSET_MAIL_SEND_INFO = {
-    'subject': 'Pleethai Request Recieved',
+    'subject': 'GaifaaYeepun Request Mail',
     'templete_path': 'mails/request.txt',
     'from_email': 'test.gaifaa@gmail.com',
     'recipient_list': [
