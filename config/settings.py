@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'import_export',
     'crispy_forms',
     'pleethai',
-    'taggit'
+    'taggit',
+    'gmailapi_backend'
 ]
 
 MIDDLEWARE = [
